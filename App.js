@@ -1,23 +1,16 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import Login from './srcl/components/Login';
+import Account from './src/components/Account';
 import Home from './src/components/Home';
 import ClassCard from './src/components/ClassCard';
 
 class LoginScreen extends React.Component {
-  login = () => {
-    this.props.navigation.navigate('App')
-  }
   render() {
     return (
-      <View>
-        {/* <Login /> */}
-        <Button
-          onPress={this.login}
-          title="Login"
-          color="#b70303"
-        />
+      <View style={styles.login}>
+        <Login navigation={this.props.navigation} />
       </View>
     );
   }
@@ -39,10 +32,30 @@ class ClassesScreen extends React.Component {
   }
 }
 
-const TabNavigator = createBottomTabNavigator({
-  Home: HomeScreen,
-  Classes: ClassesScreen,
-});
+class AccountScreen extends React.Component {
+  render() {
+    return (
+      <Account />
+    );
+  }
+}
+
+const TabNavigator = createBottomTabNavigator(
+  {
+    Home: HomeScreen,
+    Classes: ClassesScreen,
+    Account: AccountScreen
+  },
+  {
+    tabBarOptions: {
+      activeBackgroundColor: '#C35656',
+      style: {
+        backgroundColor: '#f1f1f1',
+        color: '#f1f1f1'
+      }
+    }
+  }
+);
 
 export default createAppContainer(createSwitchNavigator(
   {
@@ -53,3 +66,11 @@ export default createAppContainer(createSwitchNavigator(
     initialRouteName: 'Auth'
   }
 ));
+
+const styles = StyleSheet.create({
+  login: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});

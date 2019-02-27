@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, StyleSheet, Button, View, Text, Image } from 'react-native';
+import { TextInput, StyleSheet, TouchableOpacity, Button, View, Text, Image } from 'react-native';
 //import { SafeAreaView } from 'react-navigation';
 
 
@@ -11,13 +11,13 @@ export default class Login extends Component {
             password: ""
         }
     };
-
+    forgot = () => {
+      return
+    }
     render() {
+      const {navigate} = this.props.navigation;
         return (
-
             <View>
-                <Image source={require('./800px-Rmm2.jpg')} />
-            
                 <TextInput
                     style={styles.input}
                     onChangeText={(text) => this.setState({ email: text })}
@@ -30,7 +30,7 @@ export default class Login extends Component {
                     placeholder="Password"
                 />
                 <Button
-                    onPress={this.login}
+                    onPress={() => navigate('App')}
                     title="Login"
                     color="#b70303"
                 />
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         color: "#b70303",
         textAlign: "left",
         width: 250,
-        margin: 10,
+        margin: 5,
         fontWeight: "bold",
         paddingTop: 95,
         borderBottomWidth: 1,

@@ -7,19 +7,10 @@ import Home from './src/components/Home';
 import ClassCard from './src/components/ClassCard';
 
 class LoginScreen extends React.Component {
-  login = () => {
-    this.props.navigation.navigate('App')
-  }
   render() {
     return (
-      <View style={styles.loginbtn}>
-        {/* <Login style={styles.login} /> */}
-        <Button
-          // style={styles.loginbtn}
-          onPress={this.login}
-          title="Login"
-          color="#b70303"
-        />
+      <View style={styles.login}>
+        <Login navigation={this.props.navigation} />
       </View>
     );
   }
@@ -78,9 +69,6 @@ export default createAppContainer(createSwitchNavigator(
 
 const styles = StyleSheet.create({
   login: {
-    flex: 1
-  },
-  loginbtn: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"

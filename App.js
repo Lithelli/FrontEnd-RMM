@@ -1,19 +1,14 @@
-import React from 'react';
+
 import { Button, View, Text  } from 'react-native';
 import ClassCard from './src/components/ClassCard';
 import { SafeAreaView, createStackNavigator, createAppContainer } from 'react-navigation';
+=======
+import React, { Component } from 'react'
+import { Text, View, } from 'react-native';
+import Login from '/Users/student/Desktop/rmm/FrontEnd-RMM/srcl/components/Login.js'
+>>>>>>> 2e62a5989de60fe19ce7f89217b0846d249ed05e
 
-// export default class App extends React.Component {
-//   render() {
-//     return (
-//       <SafeAreaView>
-        
-//       </SafeAreaView>
-//     );
-//   }
-// }
-//////////// MOCK HOME SCREEN TO PRACTICE NAVIGATION /////////////////
-class HomeScreen extends React.Component {
+export default class App extends Component {
   render() {
     return (
   ///////    <SafeAreaView>
@@ -63,3 +58,7 @@ export default class App extends React.Component {
 }
 
 
+        < Login/>
+    );
+  }
+}

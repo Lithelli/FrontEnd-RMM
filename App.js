@@ -1,11 +1,29 @@
 import React, { Component } from 'react'
 import { Text, View, } from 'react-native';
-import Login from './srcl/components/Login.js'
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import Login from './srcl/components/Login';
+import Home from './src/components/Home';
+import ClassCard from './src/components/ClassCard';
 
-export default class App extends Component {
+class HomeScreen extends React.Component {
   render() {
     return (
-        < Login/>
+      <Home />
     );
   }
 }
+
+class ClassesScreen extends React.Component {
+  render() {
+    return (
+      <ClassCard />
+    );
+  }
+}
+
+const TabNavigator = createBottomTabNavigator({
+  Home: HomeScreen,
+  Classes: ClassesScreen,
+});
+
+export default createAppContainer(TabNavigator);

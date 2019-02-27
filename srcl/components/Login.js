@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { TextInput, StyleSheet, Button, View, Text } from 'react-native';
+import { TextInput, StyleSheet, Button, View, Text, Image } from 'react-native';
+//import { SafeAreaView } from 'react-navigation';
 
 
 export default class Login extends Component {
@@ -13,8 +14,10 @@ export default class Login extends Component {
 
     render() {
         return (
+
             <View>
-                
+                <Image source={require('./800px-Rmm2.jpg')} />
+            
                 <TextInput
                     style={styles.input}
                     onChangeText={(text) => this.setState({ email: text })}
@@ -27,9 +30,14 @@ export default class Login extends Component {
                     placeholder="Password"
                 />
                 <Button
-                    onPress={this.submit}
+                    onPress={this.login}
                     title="Login"
-                    color="#841584"
+                    color="#b70303"
+                />
+                <Button
+                    onPress={this.forgot}
+                    title="Forgot Password?"
+                    color="#b70303"
                 />
             </View>
         );
@@ -38,11 +46,25 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
     input: {
-        backgroundColor: 'red',
-        color: "black",
-        textAlign: "center",
+        color: "#b70303",
+        textAlign: "left",
         width: 250,
         margin: 10,
+        fontWeight: "bold",
         paddingTop: 95,
+        borderBottomWidth: 1,
+        borderBottomLeftRadius: 3,
+    },
+
+    login: {
+        textAlign: "right",
+    },
+
+    forgot: {
+        textAlign: "center",
     }
-}); 
+});
+
+
+    ///Users/student/Desktop/rmm/FrontEnd-RMM/src/Navigation/menu.js
+//}

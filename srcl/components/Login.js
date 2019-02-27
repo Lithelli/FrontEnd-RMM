@@ -16,7 +16,7 @@ export default class Login extends Component {
         return (
 
             <View>
-                <Image source={require('/Users/student/Desktop/rmm/FrontEnd-RMM/srcl/components/800px-Rmm2.jpg')} />
+                <Image source={require('./800px-Rmm2.jpg')} />
             
                 <TextInput
                     style={styles.input}

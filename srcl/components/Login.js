@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { TextInput, StyleSheet, Button, View, Text, Image } from 'react-native';
 //import { SafeAreaView } from 'react-navigation';
 
-
 export default class Login extends Component {
     constructor(props) {
         super(props);

@@ -63,9 +63,10 @@ const Cstyle = StyleSheet.create({
         padding: 10,
     },
     classHeader: {
+        backgroundColor: "#C35656",
         textAlign: "center",
         fontSize: 37,
         fontWeight: "bold",
     },
-})
+});
 

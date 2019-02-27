@@ -13,7 +13,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.loginbtn}>
-        {/* <Login style={styles.login} /> */}
+        <Login style={styles.login} />
         <Button
           // style={styles.loginbtn}
           onPress={this.login}

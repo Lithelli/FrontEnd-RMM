@@ -2,11 +2,9 @@
 import { Button, View, Text  } from 'react-native';
 import ClassCard from './src/components/ClassCard';
 import { SafeAreaView, createStackNavigator, createAppContainer } from 'react-navigation';
-=======
 import React, { Component } from 'react'
 import { Text, View, } from 'react-native';
-import Login from '/Users/student/Desktop/rmm/FrontEnd-RMM/srcl/components/Login.js'
->>>>>>> 2e62a5989de60fe19ce7f89217b0846d249ed05e
+import Login from '/Users/student/Desktop/rmm/FrontEnd-RMM/srcl/components/Login.js';
 
 export default class App extends Component {
   render() {
@@ -19,7 +17,7 @@ export default class App extends Component {
             onPress = {() => this.props.navigation.navigate('Details')}
           />
         </View>
- /////////     </SafeAreaView>
+  ////////     </SafeAreaView>
     );
   }
 }
@@ -54,11 +52,5 @@ const AppContainer = createAppContainer(RootStack);
 export default class App extends React.Component {
   render() {
     return <AppContainer />;
-  }
-}
-
-
-        < Login/>
-    );
   }
 }

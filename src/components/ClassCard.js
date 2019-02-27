@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 import OneClassCard from './OneClassCard'
+
 
 export default class ClassCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            classes
+            classes: []
         }
     }
 
@@ -14,16 +16,18 @@ export default class ClassCard extends React.Component {
         const classes = this.state.classes
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View><Text>Upcoming Classes</Text></View>
+              <SafeAreaView>
+              <View><Text style={Cstyle.classHeader}>Upcoming Classes</Text></View>
                 <View style={Cstyle.classPageContainer}>
                     <View>
-                        {classes.map(class => (
-                            <View key={class.id}>
-                                <OneClassCard class={class} />
+                        {classes.map(oneClass => {
+                            <View key={oneClass.id}>
+                                <OneClassCard className={oneClass} />
                             </View>
-                        ))}
+                        })}
                     </View>
                 </View>
+              </SafeAreaView>
             </ScrollView>
         );
     }
@@ -55,9 +59,13 @@ const Cstyle = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        marginTop: 40,
         marginBottom: 20,
         padding: 10,
+    },
+    classHeader: {
+        textAlign: "center",
+        fontSize: 37,
+        fontWeight: "bold",
     },
 })
 

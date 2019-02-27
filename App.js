@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import Login from './srcl/components/Login';
 import Home from './src/components/Home';
@@ -11,9 +11,10 @@ class LoginScreen extends React.Component {
   }
   render() {
     return (
-      <View>
-        {/* <Login /> */}
+      <View style={styles.loginbtn}>
+        {/* <Login style={styles.login} /> */}
         <Button
+          // style={styles.loginbtn}
           onPress={this.login}
           title="Login"
           color="#b70303"
@@ -53,3 +54,14 @@ export default createAppContainer(createSwitchNavigator(
     initialRouteName: 'Auth'
   }
 ));
+
+const styles = StyleSheet.create({
+  login: {
+    flex: 1
+  },
+  loginbtn: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
-import { Ionicons, MaterialCommunityIcons, } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 import Login from './srcl/components/Login';
 import Account from './src/components/Account';
 import Home from './src/components/Home';
@@ -54,7 +54,7 @@ const TabNavigator = createBottomTabNavigator(
       navigationOptions:{
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-home" size={34} />
+          <FontAwesome name="calendar-o" size={34} />
         )
       }},
     Account: { screen: AccountScreen,
@@ -67,7 +67,7 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeBackgroundColor: '#C35656',
+      activeTintColor: '#C35656',
       style: {
         backgroundColor: '#f1f1f1',
         color: '#f1f1f1'

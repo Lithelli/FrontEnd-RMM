@@ -47,30 +47,31 @@ const TabNavigator = createBottomTabNavigator(
     navigationOptions:{
       tabBarLabel: ' ',
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-home" size={34} />
+        <Ionicons name="ios-home" color={tintColor} size={34} />
       )
     }},
     Classes: { screen: ClassesScreen,
       navigationOptions:{
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="calendar-o" size={34} />
+          <FontAwesome name="calendar-o" color={tintColor} size={34} />
         )
       }},
     Account: { screen: AccountScreen,
     navigationOptions:{
       tabBarLabel: ' ',
       tabBarIcon: ({ tintColor }) => (
-        <MaterialCommunityIcons name="account" size={38} />
+        <MaterialCommunityIcons name="account" color={tintColor} size={38} />
       )
     }}
   },
   {
     tabBarOptions: {
       activeTintColor: '#C35656',
+      inactiveTintColor: 'grey',
       style: {
         backgroundColor: '#f1f1f1',
-        color: '#f1f1f1'
+        color: '#f1f1f1'  
       }
     }
   }

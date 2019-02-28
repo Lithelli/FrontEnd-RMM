@@ -49,13 +49,13 @@ const Cstyle = StyleSheet.create({
         padding: 15,
         textAlign: "right",
         fontSize: 20,
-        paddingTop: 35
+        paddingTop: 20
     },
     classInstructor: {
         padding: 15,
         textAlign: "left",
         fontSize: 20,
-        paddingTop: 35
+        paddingTop: 20
     },
     card: {
         margin: 20,
@@ -67,7 +67,8 @@ const Cstyle = StyleSheet.create({
     },
     ImageBackground: {
         height: 90,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        borderRadius: 40
     },
     classPageContainer: {
         flex: 1,

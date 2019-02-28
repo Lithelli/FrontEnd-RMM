@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
+import { Ionicons, MaterialCommunityIcons, } from '@expo/vector-icons';
 import Login from './srcl/components/Login';
 import Account from './src/components/Account';
 import Home from './src/components/Home';
@@ -42,9 +43,27 @@ class AccountScreen extends React.Component {
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: HomeScreen,
-    Classes: ClassesScreen,
-    Account: AccountScreen
+    Home: { screen: HomeScreen,
+    navigationOptions:{
+      tabBarLabel: ' ',
+      tabBarIcon: ({ tintColor }) => (
+        <Ionicons name="ios-home" size={34} />
+      )
+    }},
+    Classes: { screen: ClassesScreen,
+      navigationOptions:{
+        tabBarLabel: ' ',
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-home" size={34} />
+        )
+      }},
+    Account: { screen: AccountScreen,
+    navigationOptions:{
+      tabBarLabel: ' ',
+      tabBarIcon: ({ tintColor }) => (
+        <MaterialCommunityIcons name="account" size={38} />
+      )
+    }}
   },
   {
     tabBarOptions: {

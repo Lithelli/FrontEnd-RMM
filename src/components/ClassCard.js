@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import OneClassCard from './OneClassCard';
 
@@ -20,6 +20,7 @@ export default class ClassCard extends React.Component {
                     <View><Text style={Cstyle.classHeader}>Upcoming Classes</Text></View>
                     <View style={Cstyle.classPageContainer}>
                         <View style={Cstyle.card}>
+                            <ImageBackground source={require('../../assets/laser_cutting.jpg')} style={Cstyle.ImageBackground}/>
                             <Text style={Cstyle.classTitle}>Intro to welding/plasma cutting</Text>
                             <Text style={Cstyle.classDate}>10/12/10</Text>
                             <Text style={Cstyle.classInstructor}>George Washington</Text>
@@ -39,25 +40,34 @@ export default class ClassCard extends React.Component {
 
 const Cstyle = StyleSheet.create({
     classTitle: {
+        paddingLeft: 10,
         textAlign: "left",
-        fontSize: 20,
-        paddingTop: 55
+        fontSize: 19,
+        paddingTop: 9
     },
     classDate: {
+        padding: 15,
         textAlign: "right",
         fontSize: 20,
         paddingTop: 35
     },
     classInstructor: {
+        padding: 15,
         textAlign: "left",
         fontSize: 20,
         paddingTop: 35
     },
     card: {
-        shadowColor: 
+        margin: 20,
+        borderRadius: 6,
+        shadowOpacity: 0.5,
         height: 250,
         marginBottom: 10,
         backgroundColor: '#F1F1F1'
+    },
+    ImageBackground: {
+        height: 90,
+        resizeMode: 'contain'
     },
     classPageContainer: {
         flex: 1,
@@ -68,7 +78,7 @@ const Cstyle = StyleSheet.create({
         padding: 10,
     },
     classHeader: {
-        backgroundColor: "#C35656",
+        marginTop: 9,
         textAlign: "center",
         fontSize: 37,
         fontWeight: "bold",

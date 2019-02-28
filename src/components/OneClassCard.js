@@ -6,12 +6,6 @@ export default class OneClassCard extends Component {
   // constructor(props) {
   //   super(props);
 
-  //   function classesExist(props) {
-  //     return (
-
-  //     )
-  //   }
-
   //   function classesDoNotExist(props) {
   //     return (
   //       <SafeAreaView>

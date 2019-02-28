@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { TextInput, StyleSheet, Button, View, Text, Image, SafeAreaView } from 'react-native';
-import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
-
 
 export default class Login extends Component {
     constructor(props) {
@@ -11,12 +9,11 @@ export default class Login extends Component {
             password: ""
         }
     };
-
-    login = () => {
-        this.props.navigation.navigate('App')
+    forgot = () => {
+      return
     }
-
     render() {
+      const {navigate} = this.props.navigation;
         return (
 
             <SafeAreaView>
@@ -36,7 +33,7 @@ export default class Login extends Component {
                     placeholder="Password"
                 />
                 <Button
-                    onPress={this.login}
+                    onPress={() => navigate('App')}
                     title="Login"
                     color="#b70303"
                 />
@@ -55,7 +52,7 @@ export default class Login extends Component {
         color: "#b70303",
         textAlign: "left",
         width: 250,
-        margin: 10,
+        margin: 5,
         fontWeight: "bold",
         paddingTop: 95,
         borderBottomWidth: 1,

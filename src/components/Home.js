@@ -5,10 +5,12 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Our Mission is to provide a space that 
+        <View style={styles.mission}>
+        <Text style={styles.text}>Our Mission is to provide a space that 
           promotes discovery, creativity, 
           and exploration of STEAM (Science, Technology, 
           Engineering, Art, Mathematics).</Text>
+        </View>
       </View>
     )
   }
@@ -22,6 +24,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f1f1'
   },
   text: {
-
+    fontSize: 10
+  },
+  mission: {
+    
   }
 });

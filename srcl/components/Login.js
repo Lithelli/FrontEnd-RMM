@@ -20,10 +20,10 @@ export default class Login extends Component {
         return (
 
             <SafeAreaView>
-                <Image
-                source={require('../../assets/RedLogo.png')}
-                style={styles.img}
-                 />
+                    <Image
+                    source={require('../../assets/RedLogo.png')}
+                    style={styles.img}
+                    />
                 <TextInput
                     style={styles.input}
                     onChangeText={(text) => this.setState({ email: text })}
@@ -70,6 +70,7 @@ export default class Login extends Component {
         textAlign: "center",
     },
     img: {
-        justifyContent:"center",
+        margin: 20,
+        alignSelf:"center"
     }
 });

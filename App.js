@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Ionicons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
-import Login from './srcl/components/Login';
-import Account from './src/components/Account';
-import Home from './src/components/Home';
+import Login from './src/screens/Login';
+import Account from './src/screens/Account';
+import Home from './src/screens/Home';
 import ClassCard from './src/components/ClassCard';
 
 class LoginScreen extends React.Component {

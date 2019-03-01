@@ -20,7 +20,7 @@ export default class Home extends Component {
                 <Text h1 style={styles.Header}>OUR FOCUS</Text>
               <View>
                 <Text h3 style={styles.text}>Tech and Engineering</Text>
-                <Avatar rounded icon={{ name: 'home'} />
+                <Avatar rounded icon={{ name: 'home'}} />
                 <Text h4 style={styles.text}>We offer multiple labs and tools for your tech and 
                   engineering needs! From Circuits labs to 3D printing labs, members have 
                   access to entire host of tools and space at our Makerspace!</Text>

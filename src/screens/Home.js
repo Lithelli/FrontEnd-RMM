@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
-import { Avatar, Divider, Text } from 'react-native-elements';
+import { Avatar, Text } from 'react-native-elements';
 
 export default class Home extends Component {
   render() {

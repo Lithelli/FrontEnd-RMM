@@ -38,6 +38,7 @@ export default class LoginForm extends Component {
         if (proceed) this.props.navigation.navigate('App');
       })
       .catch((err) => {
+        this.setState({ isLoggingIn: false })
         console.log(err);
       });
   }

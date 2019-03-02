@@ -1,29 +1,32 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Button, Icon } from 'react-native'
 import { SafeAreaView } from 'react-navigation';
+import Card from 'react-native-elements';
 
-export default class OneClassCard extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   function classesDoNotExist(props) {
-  //     return (
-  //       <SafeAreaView>
-  //         <View style={Cstyle.card}>
-  //           <Text>There are no classes available, or there was an error.</Text>
-  //         </View>
-  //       </SafeAreaView>
-  //     )
-  //   }
-  // }
-
+class OneClassCard extends Component {
   render() {
-    <SafeAreaView>
-      <View style={Cstyle.card}>
-        <Text style={Cstyle.classTitle}>Intro to welding/plasma cutting</Text>
-        <Text style={Cstyle.classDate}>10/12/10</Text>
-        <Text style={Cstyle.classInstructor}>George Washington</Text>
+    return (
+      <SafeAreaView>
+      <View>
+        <Card
+          title={this.props.classTitle}
+          image={require('../../assets/laser_cutting.jpg')}>
+          <Text style={{ marginBottom: 10 }}>
+            {this.props.classDate}
+          </Text>
+          <Text style={{ marginBottom: 10 }}>
+            {this.props.classInstructor}
+          </Text>
+          <Button
+            icon={<Icon name='code' color='#ffffff' />}
+            backgroundColor='#03A9F4'
+            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+            title='Sign Up Dawg' />
+        </Card>
       </View>
     </SafeAreaView>
+    )
   }
 }
+
+export default OneClassCard;

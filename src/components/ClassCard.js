@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, View, ImageBackground } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
+import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
+import SafeAreaView from 'react-navigation';
 import OneClassCard from './OneClassCard';
 
 
@@ -8,32 +8,37 @@ export default class ClassCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            classes: []
+            classes: [
+                {
+                    id: 1,
+                    classTitle: "Intro to Welding/Plasma Cutting",
+                    classDate: "03/25/2019",
+                    classInstructor: "Lee Panther"
+                },
+                {
+                    id: 2,
+                    classTitle: "Intro to Woodworking",
+                    classDate: "03/30/2019",
+                    classInstructor: "Michael Bakes"
+                }
+            ]
         }
     }
 
+    renderClasses = () => {
+        return this.state.classes.map(oneClass => {
+            return <OneClassCard key={oneClass.id} oneClass={oneClass} />;
+        });
+    };
+
     render() {
-        const classes = this.state.classes
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
                 <SafeAreaView>
                     <View><Text style={Cstyle.classHeader}>Upcoming Classes</Text></View>
-                    <View style={Cstyle.classPageContainer}>
-                        <View style={Cstyle.card}>
-                            <ImageBackground source={require('../../assets/laser_cutting.jpg')} style={Cstyle.ImageBackground}/>
-                            <Text style={Cstyle.classTitle}>Intro to welding/plasma cutting</Text>
-                            <Text style={Cstyle.classDate}>10/12/10</Text>
-                            <Text style={Cstyle.classInstructor}>George Washington</Text>
-                            {/* {classes.map(oneClass => {
-                            console.log(oneClass);
-                            <View key={oneClass.id}>
-                                <OneClassCard className={oneClass} />
-                            </View>
-                        })} */}
-                        </View>
-                    </View>
+                    <View style={Cstyle.classPageContainer}>{this.renderClasses()}</View>
                 </SafeAreaView>
-            </ScrollView>
+            </ScrollView >
         );
     }
 };

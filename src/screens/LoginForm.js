@@ -11,44 +11,46 @@ export default class LoginForm extends Component {
     }
   };
 
-  userLogin = () => {
-    this.setState({ isLoggingIn: true });
-    let proceed = false;
-    fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      }),
-    }).then((res) => res.text())
-      .then((resData) => {
-        if (resData=='home page') {
-          proceed = true;
-          console.log(resData);
-        } else {
-          console.log('no')
-        }
-      })
-      .then(() => {
-        this.setState({ isLoggingIn: false })
-        if (proceed) this.props.navigation.navigate('App');
-      })
-      .catch((err) => {
-        this.setState({ isLoggingIn: false })
-        console.log(err);
-      });
+  // userLogin = () => {
+  //   this.setState({ isLoggingIn: true });
+  //   let proceed = false;
+  //   fetch("http://localhost:3000/api/login", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       email: this.state.email,
+  //       password: this.state.password
+  //     }),
+  //   }).then((res) => res.text())
+  //     .then((resData) => {
+  //       if (resData=='home page') {
+  //         proceed = true;
+  //         console.log(resData);
+  //       } else {
+  //         console.log('no')
+  //       }
+  //     })
+  //     .then(() => {
+  //       this.setState({ isLoggingIn: false })
+  //       if (proceed) this.props.navigation.navigate('App');
+  //     })
+  //     .catch((err) => {
+  //       this.setState({ isLoggingIn: false })
+  //       console.log(err);
+  //     });
+  // }
+  login = () => {
+    this.props.navigation.navigate('App')
   }
-
   forgot = () => {
     return
   }
 
   render() {
-    // const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
       <SafeAreaView>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -79,8 +81,9 @@ export default class LoginForm extends Component {
             returnKeyType="go"
           />
           <Button
-            disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
-            onPress={this.userLogin}
+            // disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
+            // onPress={this.userLogin}
+            onPress={this.login}
             title="Login"
             color="#b70303"
           />

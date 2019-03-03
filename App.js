@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Ionicons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
-import LoginForm from './src/screens/LoginForm';
+import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
 import Home from './src/screens/Home';
 import ClassCard from './src/components/ClassCard';
@@ -12,7 +12,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.login}>
-        <LoginForm navigation={this.props.navigation} />
+        <Landing navigation={this.props.navigation} />
       </View>
     );
   }

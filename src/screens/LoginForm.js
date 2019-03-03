@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { TextInput, StyleSheet, Button, KeyboardAvoidingView, Image, SafeAreaView, StatusBar } from 'react-native';
-
+import { TextInput, StyleSheet, KeyboardAvoidingView, Image, View, SafeAreaView, StatusBar, ScrollView } from 'react-native';
+import { Button } from 'react-native-elements'
 export default class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -52,49 +52,51 @@ export default class LoginForm extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <SafeAreaView>
-        <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <StatusBar
-            barStyle="light-content"
-          />
-          <Image
-            source={require('../../assets/RedLogo.png')}
-            style={styles.img}
-          />
-          <TextInput
-            ref={input => this.email = input}
-            style={styles.input}
-            onChangeText={(email) => this.setState({ email })}
-            placeholder="Email"
-            returnKeyType="next"
-            keyboardType="email-address"
-            onSubmitEditing={() => this.password.focus()}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <TextInput
-            ref={input => this.password = input}
-            style={styles.input}
-            onChangeText={(password) => this.setState({ password })}
-            onSubmitEditing={this.userLogin}
-            secureTextEntry={true}
-            placeholder="Password"
-            returnKeyType="go"
-          />
-          <Button
-            // disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
-            // onPress={this.userLogin}
-            onPress={this.login}
-            title="Login"
-            color="#b70303"
-          />
-          <Button
-            onPress={this.forgot}
-            title="Forgot Password?"
-            color="#b70303"
-          />
+      <ScrollView>
+        <KeyboardAvoidingView behavior="padding" enabled>
+            <Image
+              source={require('../../assets/RedLogo.png')}
+              style={styles.img}
+            />
+            <Button
+              title="Sign Up"
+              onPress={this.SignUp}
+              type="clear"
+            />
+            <TextInput
+              ref={input => this.email = input}
+              style={styles.input}
+              onChangeText={(email) => this.setState({ email })}
+              placeholder="Email"
+              returnKeyType="next"
+              keyboardType="email-address"
+              onSubmitEditing={() => this.password.focus()}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <TextInput
+              ref={input => this.password = input}
+              style={styles.input}
+              onChangeText={(password) => this.setState({ password })}
+              onSubmitEditing={this.userLogin}
+              secureTextEntry={true}
+              placeholder="Password"
+              returnKeyType="go"
+            />
+            <Button
+              // disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
+              // onPress={this.userLogin}
+              onPress={this.login}
+              title="Login"
+              type="clear"
+            />
+            <Button
+              onPress={this.forgot}
+              title="Forgot Password?"
+              type="clear"
+            />
         </KeyboardAvoidingView>
-      </SafeAreaView>
+      </ScrollView>
     );
   }
 }
@@ -106,12 +108,13 @@ const styles = StyleSheet.create({
     width: 250,
     margin: 5,
     fontWeight: "bold",
-    paddingTop: 95,
+    paddingTop:70,
     borderBottomWidth: 1,
+    flexGrow: 1,
     borderBottomLeftRadius: 3,
   },
   container: {
-    flex: 1
+    flexGrow: 1
   },
   login: {
     textAlign: "right",

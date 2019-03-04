@@ -3,6 +3,17 @@ import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { Avatar, Header, Text, ListItem } from 'react-native-elements';
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+      
+    }
+  }
+  componentDidMount() {
+
+  }
+
   render() {
     const list = [
       {

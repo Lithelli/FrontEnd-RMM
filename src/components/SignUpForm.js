@@ -63,6 +63,31 @@ export default class SignUpForm extends React.Component {
                placeholder="Email"
                containerStyle={{ padding: 20 }}
                style={styles.input}
+               keyboardType="email-address"
+               returnKeyType="next"
+               secureTextEntry = {true}
+               onSubmitEditing={() => this.Fname.focus()}
+               autoCapitalize="none"
+               autoCorrect={false}
+            />
+            <Input
+               ref={input => this.Fname = input}
+               onChangeText={(email) => this.setState({ email })}
+               placeholder="First Name"
+               containerStyle={{ padding: 20 }}
+               style={styles.input}
+               returnKeyType="next"
+               secureTextEntry = {true}
+               onSubmitEditing={() => this.Lname.focus()}
+               autoCapitalize="none"
+               autoCorrect={false}
+            />
+            <Input
+               ref={input => this.Lname = input}
+               onChangeText={(email) => this.setState({ email })}
+               placeholder="Last Name"
+               containerStyle={{ padding: 20 }}
+               style={styles.input}
                returnKeyType="next"
                secureTextEntry = {true}
                onSubmitEditing={() => this.password.focus()}
@@ -75,7 +100,16 @@ export default class SignUpForm extends React.Component {
                onChangeText={(password) => this.setState({ password })}
                placeholder="Password"
                returnKeyType="go"
-               keyboardType="email-address"
+               autoCapitalize="none"
+               onSubmitEditing={() => this.password2.focus()}
+               autoCorrect={false}
+            />
+             <Input
+               ref={input => this.password2 = input}
+               style={styles.input}
+               onChangeText={(password) => this.setState({ password })}
+               placeholder="Confirm Password"
+               returnKeyType="go"
                autoCapitalize="none"
                onSubmitEditing={() => this.login()}
                autoCorrect={false}

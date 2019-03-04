@@ -65,13 +65,13 @@ class AccountScreen extends React.Component {
 }
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: { screen: HomeScreen,
-    navigationOptions:{
-      tabBarLabel: ' ',
-      tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-home" color={tintColor} size={34} />
-      )
-    }},
+    Account: { screen: AccountScreen,
+      navigationOptions:{
+        tabBarLabel: ' ',
+        tabBarIcon: ({ tintColor }) => (
+          <MaterialCommunityIcons name="account" color={tintColor} size={38} />
+        )
+      }},
     Classes: { screen: ClassesScreen,
       navigationOptions:{
         tabBarLabel: ' ',
@@ -79,13 +79,15 @@ const TabNavigator = createBottomTabNavigator(
           <FontAwesome name="calendar-o" color={tintColor} size={34} />
         )
       }},
-    Account: { screen: AccountScreen,
+    Home: { screen: HomeScreen,
     navigationOptions:{
       tabBarLabel: ' ',
       tabBarIcon: ({ tintColor }) => (
-        <MaterialCommunityIcons name="account" color={tintColor} size={38} />
+        <Ionicons name="ios-home" color={tintColor} size={34} />
       )
-    }}
+    }},
+  
+   
   },
   {
     tabBarOptions: {

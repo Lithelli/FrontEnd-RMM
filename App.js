@@ -6,13 +6,35 @@ import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
 import Home from './src/screens/Home';
 import ClassCard from './src/components/ClassCard';
+import SignUpForm from './src/components/SignUpForm';
+import LoginForm from './src/components/LoginForm';
 
 
-class LoginScreen extends React.Component {
+class LandingPage extends React.Component {
   render() {
     return (
       <View style={styles.login}>
         <Landing navigation={this.props.navigation} />
+      </View>
+    );
+  }
+}
+
+class LoginFormPage extends React.Component {
+  render() {
+    return (
+      <View style={styles.login}>
+        <LoginForm navigation={this.props.navigation} />
+      </View>
+    );
+  }
+}
+
+class SignUpFormPage extends React.Component {
+  render() {
+    return (
+      <View style={styles.login}>
+        <SignUpForm navigation={this.props.navigation} />
       </View>
     );
   }
@@ -80,8 +102,10 @@ const TabNavigator = createBottomTabNavigator(
 
 export default createAppContainer(createSwitchNavigator(
   {
-    Auth: LoginScreen,
-    App: TabNavigator
+    Auth: LandingPage,
+    App: TabNavigator,
+    Login: LoginFormPage,
+    SignUp: SignUpFormPage
   },
   {
     initialRouteName: 'Auth'

@@ -12,7 +12,7 @@ export default class SignUpForm extends React.Component {
        isLoggingIn: false
        }
     }
-    // userLogin = () => {
+    // userRegister = () => {
     //   this.setState({ isLoggingIn: true });
     //   let proceed = false;
     //   fetch("http://localhost:3000/api/login", {

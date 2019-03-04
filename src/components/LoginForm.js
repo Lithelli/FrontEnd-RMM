@@ -55,6 +55,10 @@ export default class LoginForm extends React.Component {
     return(
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <SafeAreaView>
+         <Image
+          source={require('../../assets/RedLogo.png')}
+          style={styles.img}
+         />
          <Input
              ref={input => this.email = input}
              onChangeText={(email) => this.setState({ email })}

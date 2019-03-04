@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image, View } from 'react-native';
-import { Button, Input } from 'react-native-elements'
+import { Button, Input } from 'react-native-elements';
 
 export default class LoginForm extends React.Component {
   constructor(props){
@@ -11,47 +11,45 @@ export default class LoginForm extends React.Component {
      isLoggingIn: false
      }
   }
-  // userLogin = () => {
-  //   this.setState({ isLoggingIn: true });
-  //   let proceed = false;
-  //   fetch("http://localhost:3000/api/login", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       email: this.state.email,
-  //       password: this.state.password
-  //     }),
-  //   }).then((res) => res.text())
-  //     .then((resData) => {
-  //       if (resData=='home page') {
-  //         proceed = true;
-  //         console.log(resData);
-  //       } else {
-  //         console.log('no')
-  //       }
-  //     })
-  //     .then(() => {
-  //       this.setState({ isLoggingIn: false })
-  //       if (proceed) this.props.navigation.navigate('App');
-  //     })
-  //     .catch((err) => {
-  //       this.setState({ isLoggingIn: false })
-  //       console.log(err);
-  //     });
-  // }
-  
-  login = () => {
-    this.props.navigation.navigate('App')
+
+  userLogin = () => {
+    this.setState({ isLoggingIn: true });
+    let proceed = false;
+    fetch("https://cryptic-crag.herokuapp.com/api/login", {
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      }),
+    }).then((res) => res.text())
+      .then((resData) => {
+        if (resData=='home') {
+          proceed = true;
+          console.log(resData);
+        } else {
+          console.log(resData);
+          console.log('no')
+        }
+      })
+      .then(() => {
+        this.setState({ isLoggingIn: false })
+        if (proceed) this.props.navigation.navigate('App');
+      })
+      .catch((err) => {
+        this.setState({ isLoggingIn: false })
+        console.log(err);
+      });
   }
+  
    forgot = () => {
      this.props.navigation.navigate('NewPass')
   }
 
   render(){
-    const { navigate } = this.props.navigation
     return(
          <KeyboardAvoidingView behavior="padding" style={styles.container}>
          <SafeAreaView>
@@ -66,7 +64,7 @@ export default class LoginForm extends React.Component {
              containerStyle={{ paddingHorizontal: 37}}
              style={styles.input}
              returnKeyType="next"
-             secureTextEntry = {true}
+             keyboardType="email-address"
              onSubmitEditing={() => this.password.focus()}
              autoCapitalize="none"
              autoCorrect={false}
@@ -78,15 +76,14 @@ export default class LoginForm extends React.Component {
              placeholder="Password"
              containerStyle={{ paddingHorizontal: 37}}
              returnKeyType="go"
-             keyboardType="email-address"
+             secureTextEntry = {true}
              autoCapitalize="none"
-             onSubmitEditing={() => this.login()}
+             onSubmitEditing={() => this.userLogin}
              autoCorrect={false}
           />
           <Button
-            // disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
-            // onPress={this.userLogin}
-            onPress={this.login}
+            disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
+            onPress={this.userLogin}
             title="Login"
             type="clear"
           />

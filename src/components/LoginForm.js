@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image, View } from 'react-native';
 import { Button, Input } from 'react-native-elements'
 
 export default class LoginForm extends React.Component {
@@ -53,8 +53,9 @@ export default class LoginForm extends React.Component {
   render(){
     const { navigate } = this.props.navigation
     return(
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <SafeAreaView>
+      <View style={styles.container}>
+         <KeyboardAvoidingView behavior="padding">
+         <SafeAreaView>
          <Image
           source={require('../../assets/RedLogo.png')}
           style={styles.img}
@@ -63,7 +64,7 @@ export default class LoginForm extends React.Component {
              ref={input => this.email = input}
              onChangeText={(email) => this.setState({ email })}
              placeholder="Email"
-             containerStyle={{ padding: 20 }}
+             containerStyle={{ paddingHorizontal: 37}}
              style={styles.input}
              returnKeyType="next"
              secureTextEntry = {true}
@@ -76,9 +77,11 @@ export default class LoginForm extends React.Component {
              style={styles.input}
              onChangeText={(password) => this.setState({ password })}
              placeholder="Password"
+             containerStyle={{ paddingHorizontal: 37}}
              returnKeyType="go"
              keyboardType="email-address"
              autoCapitalize="none"
+             onSubmitEditing={() => this.login()}
              autoCorrect={false}
           />
           <Button
@@ -95,6 +98,8 @@ export default class LoginForm extends React.Component {
            />
       </SafeAreaView>
       </KeyboardAvoidingView>
+      </View>
+     
     );
   }
 }
@@ -111,13 +116,18 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 3
   },
   container: {
-    flexGrow: 1,
-    justifyContent:"center"
+    flex:1,
+    justifyContent:"center",
+    alignSelf:"stretch",
+    backgroundColor:"#Dee2D9"
   },
   login: {
     textAlign: "right",
   },
   forgot: {
     textAlign: "center",
+  },
+  img:{
+    alignSelf:"center"
   }
 });

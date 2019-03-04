@@ -77,6 +77,7 @@ export default class SignUpForm extends React.Component {
                returnKeyType="go"
                keyboardType="email-address"
                autoCapitalize="none"
+               onSubmitEditing={() => this.login()}
                autoCorrect={false}
             />
             <Button

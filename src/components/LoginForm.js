@@ -53,8 +53,7 @@ export default class LoginForm extends React.Component {
   render(){
     const { navigate } = this.props.navigation
     return(
-      <View style={styles.container}>
-         <KeyboardAvoidingView behavior="padding">
+         <KeyboardAvoidingView behavior="padding" style={styles.container}>
          <SafeAreaView>
          <Image
           source={require('../../assets/RedLogo.png')}
@@ -98,8 +97,6 @@ export default class LoginForm extends React.Component {
            />
       </SafeAreaView>
       </KeyboardAvoidingView>
-      </View>
-     
     );
   }
 }

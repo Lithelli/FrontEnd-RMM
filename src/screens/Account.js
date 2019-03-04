@@ -7,9 +7,10 @@ export default class Home extends Component {
     super(props);
     this.state = {
       userName: "",
-      
+
     }
   }
+  
   componentDidMount() {
 
   }
@@ -49,24 +50,23 @@ export default class Home extends Component {
                 <Avatar
                   size='large'
                   rounded
-                  source={{ uri: 
-                    'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
+                  source={{
+                    uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
+                  }}
                   showEditButton
                 />
               </View>
             </View>
             <View>
-              {
-                list.map((item, i) => (
-                  <ListItem
-                    key={i}
-                    title={item.title}
-                    leftIcon={{ name: item.icon }}
-                    chevron={true}
-                    bottomDivider={true}
-                  />
-                ))
-              }
+              {list.map((item, i) => (
+                <ListItem
+                  key={i}
+                  title={item.title}
+                  leftIcon={{ name: item.icon }}
+                  chevron={true}
+                  bottomDivider={true}
+                />
+              ))}
             </View>
           </View>
         </SafeAreaView>

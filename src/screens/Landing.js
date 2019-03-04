@@ -3,6 +3,8 @@ import { Image, View, StyleSheet, SafeAreaView} from 'react-native';
 import { Button } from 'react-native-elements';
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
+import { createTabNavigator } from 'react-navigation';
+
 
 export default class Landing extends Component {
   render() {
@@ -17,7 +19,6 @@ export default class Landing extends Component {
             type="clear"
         />
         <LoginForm navigation={this.props.navigation}/>
-        <SignUpForm navigation={this.props.navigation}/>
       </SafeAreaView>
     )
   }

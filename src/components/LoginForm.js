@@ -75,6 +75,7 @@ export default class LoginForm extends React.Component {
              returnKeyType="go"
              keyboardType="email-address"
              autoCapitalize="none"
+             onSubmitEditing={() => this.login()}
              autoCorrect={false}
           />
           <Button

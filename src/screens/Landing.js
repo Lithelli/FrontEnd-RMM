@@ -7,7 +7,8 @@ import { createTabNavigator } from 'react-navigation';
 
 
 export default class Landing extends Component {
-  render() {
+   render() {
+    const {navigate} = this.props.navigation
     return (
       <SafeAreaView>
         <Image
@@ -17,8 +18,13 @@ export default class Landing extends Component {
         <Button
             title="Sign Up"
             type="clear"
+            onPress={() => navigate("SignUp")}
         />
-        <LoginForm navigation={this.props.navigation}/>
+         <Button
+            title="Login"
+            type="clear"
+            onPress={() => navigate("Login")}
+        />
       </SafeAreaView>
     )
   }

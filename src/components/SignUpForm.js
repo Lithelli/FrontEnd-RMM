@@ -47,9 +47,6 @@ export default class SignUpForm extends React.Component {
     login = () => {
       this.props.navigation.navigate('App')
     }
-     forgot = () => {
-       this.props.navigation.navigate('NewPass')
-    }
   
     render(){
       const { navigate } = this.props.navigation
@@ -81,17 +78,35 @@ export default class SignUpForm extends React.Component {
             <Button
               // disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
               // onPress={this.userLogin}
-              onPress={this.login}
-              title="Login"
+              onPress={this.Register}
+              title="Register"
               type="clear"
             />
-             <Button
-               onPress={this.forgot}
-               title="Forgot Password?"
-               type="clear"
-             />
         </SafeAreaView>
         </KeyboardAvoidingView>
       );
     }
   }
+
+  const styles = StyleSheet.create({
+    input: {
+      color: "#b70303",
+      textAlign: "left",
+      width: 250,
+      margin: 5,
+      fontWeight: "bold",
+      borderBottomWidth: 1,
+      flexGrow: 1,
+      borderBottomLeftRadius: 3
+    },
+    container: {
+      flexGrow: 1,
+      justifyContent:"center"
+    },
+    login: {
+      textAlign: "right",
+    },
+    forgot: {
+      textAlign: "center",
+    }
+  });

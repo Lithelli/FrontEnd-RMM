@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image } from 'react-native';
 import { Button, Input, CheckBox } from 'react-native-elements';
+import Landing from '../screens/Landing'
 
 
 export default class SignUpForm extends React.Component {
@@ -15,6 +16,8 @@ export default class SignUpForm extends React.Component {
       isRegistering: false
     }
   }
+
+
   userRegister = () => {
     this.setState({ isRegistering: true });
     let proceed = false;
@@ -51,6 +54,7 @@ export default class SignUpForm extends React.Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <SafeAreaView>
@@ -127,6 +131,11 @@ export default class SignUpForm extends React.Component {
             onPress={this.userRegister}
             title="Register"
             type="clear"
+          />
+          <Button 
+            type="clear"
+            title="Login"
+            onPress={() => navigate('Auth')}
           />
         </SafeAreaView>
       </KeyboardAvoidingView>

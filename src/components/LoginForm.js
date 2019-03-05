@@ -52,7 +52,6 @@ export default class LoginForm extends React.Component {
   render(){
     return(
          <KeyboardAvoidingView behavior="padding" style={styles.container}>
-         <SafeAreaView>
          <Image
           source={require('../../assets/RedLogo.png')}
           style={styles.img}
@@ -92,7 +91,6 @@ export default class LoginForm extends React.Component {
              title="Forgot Password?"
              type="clear"
            />
-      </SafeAreaView>
       </KeyboardAvoidingView>
     );
   }

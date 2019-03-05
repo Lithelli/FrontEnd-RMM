@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent:"center",
     alignSelf:"stretch",
-    backgroundColor:"#Dee2D9"
   },
   login: {
     textAlign: "right",

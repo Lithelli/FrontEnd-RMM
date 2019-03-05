@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { Button, Input, CheckBox } from 'react-native-elements';
 
 
 export default class SignUpForm extends React.Component {
@@ -62,7 +62,7 @@ export default class SignUpForm extends React.Component {
             ref={input => this.email = input}
             onChangeText={(email) => this.setState({ email })}
             placeholder="Email"
-            containerStyle={{ padding: 20 }}
+            containerStyle={{ padding: 13 }}
             style={styles.input}
             keyboardType="email-address"
             returnKeyType="next"
@@ -74,7 +74,7 @@ export default class SignUpForm extends React.Component {
             ref={input => this.Fname = input}
             onChangeText={(Fname) => this.setState({ Fname })}
             placeholder="First Name"
-            containerStyle={{ padding: 20 }}
+            containerStyle={{ padding: 13 }}
             style={styles.input}
             returnKeyType="next"
             onSubmitEditing={() => this.Lname.focus()}
@@ -85,7 +85,7 @@ export default class SignUpForm extends React.Component {
             ref={input => this.Lname = input}
             onChangeText={(Lname) => this.setState({ Lname })}
             placeholder="Last Name"
-            containerStyle={{ padding: 20 }}
+            containerStyle={{ padding: 13 }}
             style={styles.input}
             returnKeyType="next"
             onSubmitEditing={() => this.password.focus()}
@@ -97,7 +97,8 @@ export default class SignUpForm extends React.Component {
             style={styles.input}
             onChangeText={(password) => this.setState({ password })}
             placeholder="Password"
-            returnKeyType="go"
+            containerStyle={{ padding: 13 }}
+            returnKeyType="next"
             autoCapitalize="none"
             secureTextEntry={true}
             onSubmitEditing={() => this.password2.focus()}
@@ -108,11 +109,18 @@ export default class SignUpForm extends React.Component {
             style={styles.input}
             onChangeText={(password2) => this.setState({ password2 })}
             placeholder="Confirm Password"
+            containerStyle={{ padding: 13 }}
             returnKeyType="go"
             autoCapitalize="none"
             secureTextEntry={true}
             onSubmitEditing={() => this.userRegister}
             autoCorrect={false}
+          />
+          <CheckBox
+            title='Agree to Terms and Conditions'
+            checked={this.state.checked}
+            checkedIcon='check-square-o'
+            onPress={() => this.setState({checked: !this.state.checked})}
           />
           <Button
             disabled={this.state.isRegistering || !this.state.email || !this.state.password}
@@ -146,5 +154,8 @@ const styles = StyleSheet.create({
   },
   forgot: {
     textAlign: "center",
+  },
+  img: {
+    alignSelf:"center"
   }
 });

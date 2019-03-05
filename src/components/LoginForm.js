@@ -46,7 +46,7 @@ export default class LoginForm extends React.Component {
   }
   
    forgot = () => {
-     this.props.navigation.navigate('NewPass')
+     this.props.navigation.navigate('App');
   }
 
   render(){
@@ -82,8 +82,8 @@ export default class LoginForm extends React.Component {
              autoCorrect={false}
           />
           <Button
-            disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
-            onPress={this.userLogin}
+            // disabled={this.state.isLoggingIn || !this.state.email || !this.state.password}
+            onPress={this.forgot}
             title="Login"
             type="clear"
           />

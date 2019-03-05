@@ -7,17 +7,16 @@ export default class OneClassCard extends Component {
   constructor(props) {
     super(props);
   }
-  // to be filled out later
+
   handlePress = () => {
     console.log("button pressed on card");
   };
+
   render() {
     return (
       <SafeAreaView>
-        <Card
-          title={this.props.oneClass.classTitle}
-          image={require("../../assets/laser_cutting.jpg")}
-        >
+        <Card image={require("../../assets/laser_cutting.jpg")}>
+        
           <Text style={{ marginBottom: 10 }}>
             {this.props.oneClass.classInstructor}
           </Text>

@@ -8,6 +8,7 @@ import Home from './src/screens/Home';
 import ClassCard from './src/components/ClassCard';
 import SignUpForm from './src/components/SignUpForm';
 import LoginForm from './src/components/LoginForm';
+import Payment from './src/screens/Payment';
 
 
 class LandingPage extends React.Component {
@@ -17,6 +18,14 @@ class LandingPage extends React.Component {
         <Landing navigation={this.props.navigation} />
       </View>
     );
+  }
+}
+
+class PaymentScreen extends React.Component {
+  render() {
+    return(
+      <Payment/>
+    )
   }
 }
 
@@ -86,8 +95,10 @@ const TabNavigator = createBottomTabNavigator(
         <Ionicons name="ios-home" color={tintColor} size={34} />
       )
     }},
-  
-   
+    Payment: { screen : PaymentScreen,
+      navigationOptions:{
+        tabBarLabel: 'PayMe'
+    }},
   },
   {
     tabBarOptions: {

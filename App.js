@@ -4,7 +4,6 @@ import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } f
 import { Ionicons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
-import Home from './src/screens/Home';
 import ClassCard from './src/components/ClassCard';
 import SignUpForm from './src/components/SignUpForm';
 import LoginForm from './src/components/LoginForm';
@@ -49,14 +48,6 @@ class SignUpFormPage extends React.Component {
   }
 }
 
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <Home />
-    );
-  }
-}
-
 class ClassesScreen extends React.Component {
   render() {
     return (
@@ -88,13 +79,6 @@ const TabNavigator = createBottomTabNavigator(
           <FontAwesome name="calendar-o" color={tintColor} size={34} />
         )
       }},
-    Home: { screen: HomeScreen,
-    navigationOptions:{
-      tabBarLabel: ' ',
-      tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="ios-home" color={tintColor} size={34} />
-      )
-    }},
     Payment: { screen : PaymentScreen,
       navigationOptions:{
         tabBarLabel: 'PayMe'
@@ -121,7 +105,7 @@ export default createAppContainer(createSwitchNavigator(
     SignUp: SignUpFormPage
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 ));
 

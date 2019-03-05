@@ -1,40 +1,87 @@
 import React, { Component } from 'react';
-import { View, Button } from 'react-native';
-import stripe from 'tipsi-stripe';
-
-stripe.setOptions({
-  publishableKey: 'pk_test_1raXLhTJ8kR7EPXRCDJxj9YA',
-});
+import { WebView, Platform, View, ViewPropTypes } from 'react-native';
+import { PropTypes } from 'prop-types';
 
 export default class Payment extends Component {
-  requestPayment = () => {
-    return stripe
-      .paymentRequestWithCardForm()
-      .then(stripeTokenInfo => {
-        console.warn('Token created', { stripeTokenInfo });
-      })
-      .catch(error => {
-        console.warn('Payment failed', { error });
-      });
-  };
-
   render() {
+    const {
+      publicKey,
+      amount,
+      allowRememberMe,
+      currency,
+      description,
+      imageUrl,
+      storeName,
+      prepopulatedEmail,
+      style,
+      onPaymentSuccess,
+      onClose
+    } = this.props;
+
+    const jsCode = `(function() {
+                    var originalPostMessage = window.postMessage;
+                    var patchedPostMessage = function(message, targetOrigin, transfer) {
+                      originalPostMessage(message, targetOrigin, transfer);
+                    };
+                    patchedPostMessage.toString = function() {
+                      return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
+                    };
+                    window.postMessage = patchedPostMessage;
+                  })();`;
     return (
-      <View style={styles.container}>
-        <Button
-          title="Make a payment"
-          onPress={this.requestPayment}
-          disabled={this.state.isPaymentPending}
-        />
-      </View>
+      <WebView
+        javaScriptEnabled={true}
+        scrollEnabled={false}
+        bounces={false}
+        injectedJavaScript={jsCode}
+        source={{ html: `<script src="https://checkout.stripe.com/checkout.js"></script>
+            <script>
+            var handler = StripeCheckout.configure({
+              key: '${publicKey}',
+              image: '${imageUrl}',
+              locale: 'auto',
+              token: function(token) {
+                window.postMessage(token.id, token.id);
+              },
+            });
+            window.onload = function() {
+              handler.open({
+                image: '${imageUrl}',
+                name: '${storeName}',
+                description: '${description}',
+                amount: ${amount},
+                currency: '${currency}',
+                allowRememberMe: ${allowRememberMe},
+                email: '${prepopulatedEmail}',
+                closed: function() {
+                  window.postMessage("WINDOW_CLOSED", "*");
+                }
+              });
+            };
+            </script>`, baseUrl: ''}}
+        onMessage={event => event.nativeEvent.data === 'WINDOW_CLOSED' ? onClose() : onPaymentSuccess(event.nativeEvent.data)}
+        style={[{ flex: 1 }, style]}
+        scalesPageToFit={Platform.OS === 'ios'}
+      />
     );
   }
 }
 
-const styles = {
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+Payment.propTypes = {
+  publicKey: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  storeName: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  allowRememberMe: PropTypes.bool.isRequired,
+  onPaymentSuccess: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  currency: PropTypes.string,
+  prepopulatedEmail: PropTypes.string,
+  style: ViewPropTypes.style
+};
+
+Payment.defaultProps = {
+  prepopulatedEmail: '',
+  currency: 'USD',
 };

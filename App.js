@@ -6,28 +6,18 @@ import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
 import ClassCard from './src/components/ClassCard';
 import SignUpForm from './src/components/SignUpForm';
-import LoginForm from './src/components/LoginForm';
 
 
 class LandingPage extends React.Component {
   render() {
     return (
       <View style={styles.login}>
-        <Landing navigation={this.props.navigation} />
+        <Landing navigation={this.props.navigation}/>
       </View>
     );
   }
 }
 
-class LoginFormPage extends React.Component {
-  render() {
-    return (
-      <View style={styles.login}>
-        <LoginForm navigation={this.props.navigation} />
-      </View>
-    );
-  }
-}
 
 class SignUpFormPage extends React.Component {
   render() {
@@ -72,8 +62,7 @@ const TabNavigator = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="calendar-o" color={tintColor} size={34} />
         )
-      }
-    },
+      }}
   },
   {
     tabBarOptions: {
@@ -92,7 +81,6 @@ export default createAppContainer(createSwitchNavigator(
   {
     Auth: LandingPage,
     App: TabNavigator,
-    Login: LoginFormPage,
     SignUp: SignUpFormPage
   },
   {

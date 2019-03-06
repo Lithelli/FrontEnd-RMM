@@ -1,33 +1,51 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { Avatar, Header, Text, ListItem } from 'react-native-elements';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "dave",
-      membershipStatus: "Full Member"
+      userName: "DaveChopWood",
+      membershipStatus: "Full Member",
+      statusBarMargin: 0
     }
   }
 
-  // componentDidMount() {
-  //   fetch('deeznuts');
-  // }
+  handleStatusBarMargin = () => {
+    let marginActual = getStatusBarHeight();
+    this.setState({statusBarMargin: marginActual});
+  }
+
+  handleListExpand = (item) => {
+
+  }
 
   render() {
     const list = [
       {
         title: 'My Classes',
-        icon: 'class'
+        icon: 'class',
+        content: {
+          membershipStatus: this.state.membershipStatus,
+          level_of_dopeness: 3.50
+        }
       },
       {
         title: 'Membership',
-        icon: 'credit-card'
+        icon: 'credit-card',content: {
+          membershipStatus: this.state.membershipStatus,
+          level_of_dopeness: 3.50
+        }
       },
       {
         title: 'Account Settings',
-        icon: 'settings'
+        icon: 'settings',
+        content: {
+          membershipStatus: this.state.membershipStatus,
+          level_of_dopeness: 3.50
+        }
       },
     ]
     return (
@@ -44,7 +62,7 @@ export default class Home extends Component {
                   size='large'
                   rounded
                   source={{
-                    uri: '{}'
+                    uri: '{https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjFu4qF4e3gAhVInOAKHQLcDn4QjRx6BAgBEAU&url=https%3A%2F%2Fwww.redmountainmakers.org%2F&psig=AOvVaw16bFNBBIgy0uKyZ93YFNtf&ust=1551970026776554}'
                   }}
                   showEditButton
                 />
@@ -58,8 +76,10 @@ export default class Home extends Component {
                   leftIcon={{ name: item.icon }}
                   chevron={true}
                   bottomDivider={true}
-                  onPress={() => navigate("")}
-                />
+                  onPress={innerHeight: 100}
+                >
+                  Hello
+                </ListItem>
               ))}
             </View>
           </View>
@@ -71,6 +91,7 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 24,
     flex: 1,
     justifyContent: "center",
     backgroundColor: '#413030',

@@ -56,24 +56,24 @@ class AccountScreen extends React.Component {
 }
 const TabNavigator = createBottomTabNavigator(
   {
-    Account: { screen: AccountScreen,
-      navigationOptions:{
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: {
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
           <MaterialCommunityIcons name="account" color={tintColor} size={38} />
         )
-      }},
-    Classes: { screen: ClassesScreen,
-      navigationOptions:{
+      }
+    },
+    Classes: {
+      screen: ClassesScreen,
+      navigationOptions: {
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="calendar-o" color={tintColor} size={34} />
         )
-      }},
-    Payment: { screen : PaymentScreen,
-      navigationOptions:{
-        tabBarLabel: 'PayMe'
-    }},
+      }
+    },
   },
   {
     tabBarOptions: {
@@ -81,7 +81,7 @@ const TabNavigator = createBottomTabNavigator(
       inactiveTintColor: 'grey',
       style: {
         backgroundColor: '#f1f1f1',
-        color: '#f1f1f1'  
+        color: '#f1f1f1'
       }
     }
   }

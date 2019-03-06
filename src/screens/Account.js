@@ -6,14 +6,14 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: "",
-
+      userName: "dave",
+      membershipStatus: "Full Member"
     }
   }
-  
-  componentDidMount() {
 
-  }
+  // componentDidMount() {
+  //   fetch('deeznuts');
+  // }
 
   render() {
     const list = [
@@ -32,26 +32,19 @@ export default class Home extends Component {
     ]
     return (
       <ScrollView>
-        <Header
-          containerStyle={{
-            backgroundColor: '#f1f1f1'
-          }}
-          placement="left"
-          rightComponent={{ text: 'MY PROFILE' }}
-        />
         <SafeAreaView>
           <View style={styles.container}>
             <View style={styles.header}>
               <View>
-                <Text style={styles.avatarText}>Hello, User.Name!</Text>
-                <Text style={styles.avatarText}>Member Status</Text>
+                <Text style={styles.avatarText}>Hello, {this.state.userName}!</Text>
+                <Text style={styles.avatarText}>Member Status: {this.state.membershipStatus}</Text>
               </View>
               <View style={styles.avatar}>
                 <Avatar
                   size='large'
                   rounded
                   source={{
-                    uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
+                    uri: '{}'
                   }}
                   showEditButton
                 />
@@ -65,6 +58,7 @@ export default class Home extends Component {
                   leftIcon={{ name: item.icon }}
                   chevron={true}
                   bottomDivider={true}
+                  onPress={() => navigate("")}
                 />
               ))}
             </View>

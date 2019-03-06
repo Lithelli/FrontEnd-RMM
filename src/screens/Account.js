@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import { Avatar, Header, Text, ListItem } from 'react-native-elements';
+import { Avatar, Text, Card, ListItem } from 'react-native-elements';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+let console = require('console');
 
 export default class Home extends Component {
   constructor(props) {
@@ -9,17 +10,20 @@ export default class Home extends Component {
     this.state = {
       userName: "DaveChopWood",
       membershipStatus: "Full Member",
-      statusBarMargin: 0
+      statusBarMargin: 0,
+      collapse: false
     }
   }
 
   handleStatusBarMargin = () => {
     let marginActual = getStatusBarHeight();
-    this.setState({statusBarMargin: marginActual});
+    this.setState({ statusBarMargin: marginActual });
   }
 
-  handleListExpand = (item) => {
-
+  handleListItemStyle = () => {
+    this.setState({
+      collapse: !this.state.collapse
+    })
   }
 
   render() {
@@ -34,7 +38,7 @@ export default class Home extends Component {
       },
       {
         title: 'Membership',
-        icon: 'credit-card',content: {
+        icon: 'credit-card', content: {
           membershipStatus: this.state.membershipStatus,
           level_of_dopeness: 3.50
         }
@@ -68,23 +72,29 @@ export default class Home extends Component {
                 />
               </View>
             </View>
-            <View>
-              {list.map((item, i) => (
-                <ListItem
-                  key={i}
-                  title={item.title}
-                  leftIcon={{ name: item.icon }}
-                  chevron={true}
-                  bottomDivider={true}
-                  onPress={innerHeight: 100}
-                >
-                  Hello
-                </ListItem>
-              ))}
-            </View>
           </View>
+          <View style={{ flex: 1 }}>
+              {
+                list.map((item, index) => (
+                  <Card
+                    key={index}
+                    style={styles.infoCards}
+                    title={item.title}
+                    onPress={this.handleListItemStyle}
+                  >
+                    {
+                      this.state.collapse ?
+                        <View>
+                          <Text>{item.content}</Text>
+                        </View>
+                        : null
+                    }
+                  </Card>
+                ))
+              }
+            </View>
         </SafeAreaView>
-      </ScrollView>
+      </ScrollView >
     )
   }
 }
@@ -93,8 +103,11 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 24,
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: '#413030',
+    justifyContent: "center"
+  },
+  infoCards: {
+    margin: 0,
+    padding: 0
   },
   text: {
     textAlign: "center",
@@ -109,6 +122,7 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   header: {
+    backgroundColor: '#413030',
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',

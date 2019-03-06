@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, StyleSheet, SafeAreaView} from 'react-native';
+import { SafeAreaView} from 'react-native';
 import { Button } from 'react-native-elements';
 import LoginForm from '../components/LoginForm'
 

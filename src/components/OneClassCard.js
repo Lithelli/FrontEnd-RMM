@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import { } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-navigation";
-import { Card, Button } from "react-native-elements";
+import { Card, Button, Overlay } from "react-native-elements";
 
 export default class OneClassCard extends Component {
   constructor(props) {
     super(props);
+    this.state ={
+      isVisible: false
+    }
   }
   // to be filled out later
   handlePress = () => {
-    console.log("button pressed on card");
+    this.setState({ isVisible: true })
   };
   render() {
     return (
@@ -26,8 +29,23 @@ export default class OneClassCard extends Component {
             title="Sign Up"
           />
         </Card>
+        <Overlay isVisible={this.state.isVisible}
+        onBackdropPress={() => this.setState({ isVisible: false })}>
+          <View style={styles.Overlay}>
+            <Text>{this.props.oneClass.classTitle}</Text>
+            <Text>{this.props.oneClass.classInstructor}</Text>
+            <Text>{this.props.oneClass.classDate}</Text>
+          </View>
+        </Overlay>
       </SafeAreaView>
     );
   }
 }
 
+const styles = StyleSheet.create({
+  Overlay:{
+    justifyContent:"center",
+    alignSelf:"center",
+    textAlign:"center"
+  }
+})

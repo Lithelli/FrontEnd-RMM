@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image, Text } from 'react-native';
 import { Button, Input, CheckBox } from 'react-native-elements';
 import Landing from '../screens/Landing'
 
@@ -120,12 +120,9 @@ export default class SignUpForm extends React.Component {
             onSubmitEditing={() => this.userRegister}
             autoCorrect={false}
           />
-          <CheckBox
-            title='Agree to Terms and Conditions'
-            checked={this.state.checked}
-            checkedIcon='check-square-o'
-            onPress={() => this.setState({checked: !this.state.checked})}
-          />
+         <Text style={styles.text}>
+           By creating an account you accept our <Text style={{textDecorationLine: "underline"}}>Terms and Conditions.</Text>
+         </Text>
           <Button
             disabled={this.state.isRegistering || !this.state.email || !this.state.password}
             onPress={this.userRegister}
@@ -166,5 +163,10 @@ const styles = StyleSheet.create({
   },
   img: {
     alignSelf:"center"
+  },
+  text:{
+    fontSize:12,
+    width:220,
+    textAlign:"center"
   }
 });

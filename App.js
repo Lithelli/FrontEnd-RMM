@@ -6,7 +6,6 @@ import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
 import ClassCard from './src/components/ClassCard';
 import SignUpForm from './src/components/SignUpForm';
-import Payment from './src/screens/Payment';
 
 
 class LandingPage extends React.Component {
@@ -19,13 +18,6 @@ class LandingPage extends React.Component {
   }
 }
 
-class PaymentScreen extends React.Component {
-  render() {
-    return(
-      <Payment/>
-    )
-  }
-}
 
 class SignUpFormPage extends React.Component {
   render() {
@@ -67,11 +59,7 @@ const TabNavigator = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="calendar-o" color={tintColor} size={34} />
         )
-      }},
-    Payment: { screen : PaymentScreen,
-      navigationOptions:{
-        tabBarLabel: 'PayMe'
-    }},
+      }}
   },
   {
     tabBarOptions: {
@@ -93,7 +81,7 @@ export default createAppContainer(createSwitchNavigator(
     SignUp: SignUpFormPage
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 ));
 

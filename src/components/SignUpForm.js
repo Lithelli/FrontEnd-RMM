@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image, Text } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image, Text, View, AsyncStorage } from 'react-native';
 import { Button, Input, CheckBox } from 'react-native-elements';
 import Landing from '../screens/Landing'
 
+const ACCESS_TOKEN = 'access_token';
 
 export default class SignUpForm extends React.Component {
   constructor(props) {
@@ -13,48 +14,52 @@ export default class SignUpForm extends React.Component {
       Lname: "",
       password: "",
       password2: "",
-      isRegistering: false
+      errors: []
     }
   }
 
+  storeToken = async (token) => {
+    try {
+      await AsyncStorage.setItem(ACCESS_TOKEN, token);
+      console.log('Token was stored');
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
-  userRegister = () => {
-    this.setState({ isRegistering: true });
-    let proceed = false;
-    fetch("https://cryptic-crag.herokuapp.com/api/register", {
-      method: "POST",
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        firstName: this.state.Fname,
-        lastName: this.state.Lname,
-        password: this.state.password,
-        password2: this.state.password2
-      }),
-    }).then((res) => res.text())
-      .then((resData) => {
-        if (resData == 'login') {
-          proceed = true;
-          console.log(resData);
-        } else {
-          console.log('no')
-        }
-      })
-      .then(() => {
-        this.setState({ isLoggingIn: false })
-        if (proceed) this.props.navigation.navigate('Login');
-      })
-      .catch((err) => {
-        this.setState({ isLoggingIn: false })
-        console.log(err);
+  userRegister = async () => {
+    try {
+      let response = await fetch("https://cryptic-crag.herokuapp.com/api/register", {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          firstName: this.state.Fname,
+          lastName: this.state.Lname,
+          password: this.state.password,
+          password2: this.state.password2
+        }),
       });
+      let res = await response.json();
+      if (res.errors) {
+        this.setState({ errors: res.errors });
+      } else {
+        let accessToken = res.token;
+        console.log(accessToken);
+        this.storeToken(accessToken);
+        this.props.navigation.navigate('Auth');
+      }
+    } catch (errors) {
+      console.log('catch err');
+      console.log(errors);
+    }
   }
 
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <SafeAreaView>
@@ -62,6 +67,7 @@ export default class SignUpForm extends React.Component {
             source={require('../../assets/RedLogo.png')}
             style={styles.img}
           />
+          <Errors errors={this.state.errors} />
           <Input
             ref={input => this.email = input}
             onChangeText={(email) => this.setState({ email })}
@@ -120,16 +126,16 @@ export default class SignUpForm extends React.Component {
             onSubmitEditing={() => this.userRegister}
             autoCorrect={false}
           />
-         <Text style={styles.text}>
-           By creating an account you accept our <Text style={{textDecorationLine: "underline"}}>Terms and Conditions.</Text>
-         </Text>
+          <Text style={styles.text}>
+            By creating an account you accept our <Text style={{ textDecorationLine: "underline" }}>Terms and Conditions.</Text>
+          </Text>
           <Button
-            disabled={this.state.isRegistering || !this.state.email || !this.state.password}
+            disabled={!this.state.email || !this.state.password || !this.state.password2}
             onPress={this.userRegister}
             title="Register"
             type="clear"
           />
-          <Button 
+          <Button
             type="clear"
             title="Login"
             onPress={() => navigate('Auth')}
@@ -138,6 +144,14 @@ export default class SignUpForm extends React.Component {
       </KeyboardAvoidingView>
     );
   }
+}
+
+const Errors = (props) => {
+  return (
+    <View>
+      {props.errors.map((error, i) => <Text key={i} style={styles.error}>{error.msg}</Text>)}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -162,11 +176,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   img: {
-    alignSelf:"center"
+    alignSelf: "center"
   },
-  text:{
-    fontSize:12,
-    width:220,
-    textAlign:"center"
+  text: {
+    fontSize: 12,
+    width: 220,
+    textAlign: "center"
+  },
+  error: {
+    textAlign: 'center',
+    backgroundColor: 'red'
   }
 });

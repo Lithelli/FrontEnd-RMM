@@ -9,7 +9,7 @@ export default class Landing extends Component {
     const {navigate} = this.props.navigation
     return (
       <SafeAreaView>
-         <LoginForm/>
+         <LoginForm navigation={this.props.navigation} />
         <Button
             title="Sign Up"
             type="clear"

@@ -37,6 +37,12 @@ export default class Home extends Component {
   //   this.setState({ statusBarMargin: marginActual });
   // }
 
+  handleChevron = () => {
+    this.setState({
+      fuckit: <Entypo name="chevron-down"  size={32} color="black"/>
+    })
+  }
+
   render() {
     return (
       <ScrollView>
@@ -58,7 +64,7 @@ export default class Home extends Component {
           <View style={{ flex: 1 }}>
             <FlatList
               data={this.state.list}
-              renderItem={({ item }) => <ListItem item={item} />}
+              renderItem={({item}) => <ListItem item={item} />}
               keyExtractor={item => item.id}
             />
           </View>

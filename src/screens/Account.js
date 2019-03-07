@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { Avatar, Text, Card, ListItem } from 'react-native-elements';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 let console = require('console');
+import { Entypo } from '@expo/vector-icons';
 
 export default class Home extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ export default class Home extends Component {
       userName: "DaveChopWood",
       membershipStatus: "Full Member",
       statusBarMargin: 0,
-      collapse: false
+      collapse: false,
+      fuckit: <Entypo name="chevron-right" size={32} color="black" />
     }
   }
 
@@ -23,6 +25,12 @@ export default class Home extends Component {
   handleListItemStyle = () => {
     this.setState({
       collapse: !this.state.collapse
+    })
+  }
+
+  handleChevron = () => {
+    this.setState({
+      fuckit: <Entypo name="chevron-down"  size={32} color="black"/>
     })
   }
 
@@ -76,11 +84,12 @@ export default class Home extends Component {
           <View style={{ flex: 1 }}>
               {
                 list.map((item, index) => (
-                  <Card
+                  <ListItem
                     key={index}
+                    fuckit
                     style={styles.infoCards}
                     title={item.title}
-                    onPress={this.handleListItemStyle}
+                    onPress={this.handleChevron}
                   >
                     {
                       this.state.collapse ?
@@ -89,7 +98,7 @@ export default class Home extends Component {
                         </View>
                         : null
                     }
-                  </Card>
+                  </ListItem>
                 ))
               }
             </View>

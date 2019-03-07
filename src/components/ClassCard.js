@@ -7,11 +7,20 @@ export default class ClassCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classes: [{
-        classInstructor: "Obo Kendui",
-        classDate: "10/11/62",
-        classTitle: "Intro to Woodshop"
-      }]
+      classes: [
+        {
+          id: 1,
+          classTitle: "Intro to Welding/Plasma Cutting",
+          classDate: "03/25/2019",
+          classInstructor: "Lee Panther"
+        },
+        {
+          id: 2,
+          classTitle: "Intro to Woodworking",
+          classDate: "03/30/2019",
+          classInstructor: "Michael Bakes"
+        }
+      ]
     };
   }
 

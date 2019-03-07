@@ -6,6 +6,7 @@ import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
 import ClassCard from './src/components/ClassCard';
 import SignUpForm from './src/components/SignUpForm';
+import Services from './src/screens/Services';
 
 
 class LandingPage extends React.Component {
@@ -51,7 +52,7 @@ const TabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
-          <MaterialCommunityIcons name="account" color={tintColor} size={38} />
+          <MaterialCommunityIcons name="account" color={tintColor} size={34} />
         )
       }
     },
@@ -60,9 +61,19 @@ const TabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="calendar-o" color={tintColor} size={34} />
+          <FontAwesome name="calendar-o" color={tintColor} size={28} />
         )
-      }}
+      }
+    },
+    Services: {
+      screen:Services,
+      navigationOptions: {
+        tabBarLabel: ' ',
+        tabBarIcon: ({ tintColor }) => (
+          <MaterialCommunityIcons name="cards-diamond" color={tintColor} size={30} />
+        )
+      }
+    }
   },
   {
     tabBarOptions: {
@@ -70,7 +81,8 @@ const TabNavigator = createBottomTabNavigator(
       inactiveTintColor: 'grey',
       style: {
         backgroundColor: '#f1f1f1',
-        color: '#f1f1f1'
+        color: '#f1f1f1',
+        paddingTop:5
       }
     }
   }

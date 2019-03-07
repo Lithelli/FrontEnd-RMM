@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView, FlatList } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 // import { getStatusBarHeight } from 'react-native-status-bar-height';
+import AccountList from '../components/AccountList';
 import ListItem from '../components/ListItem';
 
 export default class Home extends Component {
@@ -36,10 +37,6 @@ export default class Home extends Component {
   //   let marginActual = getStatusBarHeight();
   //   this.setState({ statusBarMargin: marginActual });
   // }
-  
-  renderItem(item) {
-    return <ListItem item={item} />;
-  }
 
   handleChevron = () => {
     this.setState({
@@ -68,7 +65,7 @@ export default class Home extends Component {
           <View style={{ flex: 1 }}>
             <FlatList
               data={this.state.list}
-              renderItem={this.renderItem}
+              renderItem={({item}) => <ListItem item={item} />}
               keyExtractor={item => item.id}
             />
           </View>

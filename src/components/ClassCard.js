@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, ScrollView, View } from "react-native";
+import { StyleSheet, Text, ScrollView, View, AsyncStorage } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import OneClassCard from "./OneClassCard";
+
+const ACCESS_TOKEN = 'access_token';
+const USER_ID = 'user_id';
 
 export default class ClassCard extends Component {
   constructor(props) {
@@ -22,6 +25,25 @@ export default class ClassCard extends Component {
         }
       ]
     };
+  }
+
+  componentWillMount() {
+    this.getToken();
+  }
+
+  getToken = async () => {
+    try {
+      let accessToken = await AsyncStorage.getItem(ACCESS_TOKEN);
+      if(!accessToken) {
+        console.log('No token found');
+        this.props.navigation.navigate('Auth');
+      } else {
+        this.setState({ accessToken });
+      }
+    } catch (error) {
+      console.log('Something went wrong');
+      this.props.navigation.navigate('Auth');
+    }
   }
 
   // componentDidMount() {

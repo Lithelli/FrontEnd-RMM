@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, SafeAreaView, FlatList } from 'react-native';
+import { View, StyleSheet, ScrollView, SafeAreaView, FlatList, AsyncStorage } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 // import { getStatusBarHeight } from 'react-native-status-bar-height';
 import ListItem from '../components/ListItem';
+
+const ACCESS_TOKEN = 'access_token';
 
 export default class Home extends Component {
   constructor(props) {
@@ -10,6 +12,7 @@ export default class Home extends Component {
     this.state = {
       userName: 'DaveChopWood',
       membershipStatus: 'Full Member',
+      accessToken: '',
       statusBarMargin: 0,
       collapse: true,
       list: [
@@ -32,6 +35,28 @@ export default class Home extends Component {
     };
   }
 
+  componentWillMount() {
+    this.getToken();
+  }
+
+  getToken = async () => {
+    try {
+      let accessToken = await AsyncStorage.getItem(ACCESS_TOKEN);
+      if(!accessToken) {
+        console.log('No token found');
+        this.props.navigation.navigate('Auth');
+      } else {
+        this.setState({ accessToken });
+      }
+    } catch (error) {
+      console.log('Something went wrong');
+      this.props.navigation.navigate('Auth');
+    }
+  }
+  
+  componentDidMount() {
+
+  }
   // handleStatusBarMargin = () => {
   //   let marginActual = getStatusBarHeight();
   //   this.setState({ statusBarMargin: marginActual });

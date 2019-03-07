@@ -32,7 +32,7 @@ class SignUpFormPage extends React.Component {
 class ClassesScreen extends React.Component {
   render() {
     return (
-      <ClassCard />
+      <ClassCard navigation={this.props.navigation} />
     );
   }
 }
@@ -40,7 +40,7 @@ class ClassesScreen extends React.Component {
 class AccountScreen extends React.Component {
   render() {
     return (
-      <Account />
+      <Account navigation={this.props.navigation} />
     );
   }
 }
@@ -84,7 +84,7 @@ export default createAppContainer(createSwitchNavigator(
     SignUp: SignUpFormPage
   },
   {
-    initialRouteName: 'App'
+    initialRouteName: 'Auth'
   }
 ));
 

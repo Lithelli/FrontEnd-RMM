@@ -21,7 +21,6 @@ export default class SignUpForm extends React.Component {
   storeToken = async (token) => {
     try {
       await AsyncStorage.setItem(ACCESS_TOKEN, token);
-      console.log('Token was stored');
     } catch(error) {
       console.log(error);
     }
@@ -48,7 +47,6 @@ export default class SignUpForm extends React.Component {
         this.setState({ errors: res.errors });
       } else {
         let accessToken = res.token;
-        console.log(accessToken);
         this.storeToken(accessToken);
         this.props.navigation.navigate('Auth');
       }

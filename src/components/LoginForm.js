@@ -3,6 +3,7 @@ import { StyleSheet, KeyboardAvoidingView, SafeAreaView, Image, Text, AsyncStora
 import { Button, Input } from 'react-native-elements';
 
 const ACCESS_TOKEN = 'access_token';
+const USER_ID = 'user_id';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -14,11 +15,19 @@ export default class LoginForm extends React.Component {
     }
   }
 
+  storeUserId = async (id) => {
+    try {
+      await AsyncStorage.setItem(USER_ID, id);
+      console.log('ID was stored: ' + id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   storeToken = async (token) => {
     try {
       await AsyncStorage.setItem(ACCESS_TOKEN, token);
       console.log('Token was stored');
-      this.props.navigation.navigate('App');
     } catch (error) {
       console.log(error);
     }
@@ -38,21 +47,24 @@ export default class LoginForm extends React.Component {
         }),
       });
       let res = await response.text();
+      console.log(res);
       if (res == 'Unauthorized') {
         let error = 'Email or Password is incorrect';
         this.setState({ error });
       } else {
-        this.setState({error: ''});
+        this.setState({ error: '' });
         let response = JSON.parse(res);
         this.storeToken(response.token);
+        this.storeUserId(response.user._id);
+        this.props.navigation.navigate('App');
       }
     } catch (errors) {
       console.log(errors);
     }
   }
-  
-   forgot = () => {
-     this.props.navigation.navigate('App');
+
+  forgot = () => {
+    this.props.navigation.navigate('App');
   }
 
   render() {

@@ -41,6 +41,12 @@ export default class Home extends Component {
     return <ListItem item={item} />;
   }
 
+  handleChevron = () => {
+    this.setState({
+      fuckit: <Entypo name="chevron-down"  size={32} color="black"/>
+    })
+  }
+
   render() {
     return (
       <ScrollView>

@@ -10,10 +10,11 @@ export default class OneClassCard extends Component {
       isVisible: false
     }
   }
-  // to be filled out later
+
   handlePress = () => {
     this.setState({ isVisible: true })
   };
+
   render() {
     return (
       <SafeAreaView>

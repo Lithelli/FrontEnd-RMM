@@ -50,9 +50,9 @@ export default class LoginForm extends React.Component {
       console.log(errors);
     }
   }
-
-  forgot = () => {
-    this.props.navigation.navigate('NewPass')
+  
+   forgot = () => {
+     this.props.navigation.navigate('App');
   }
 
   render() {

@@ -13,7 +13,7 @@ class LandingPage extends React.Component {
   render() {
     return (
       <View style={styles.login}>
-        <Landing navigation={this.props.navigation}/>
+        <Landing navigation={this.props.navigation} />
       </View>
     );
   }
@@ -40,7 +40,7 @@ class ClassesScreen extends React.Component {
 class AccountScreen extends React.Component {
   render() {
     return (
-      <Account navigation={this.props.navigation} />
+        <Account navigation={this.props.navigation} />
     );
   }
 }

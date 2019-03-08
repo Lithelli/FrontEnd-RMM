@@ -10,9 +10,6 @@ import reducers from '../reducers';
 const ACCESS_TOKEN = 'access_token';
 
 
-HEADER_MAX_HEIGHT = 120
-HEADER_MIN_HEIGHT = 70
-
 export default class Home extends Component {
   constructor(props) {
     super(props);

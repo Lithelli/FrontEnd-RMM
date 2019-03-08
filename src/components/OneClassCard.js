@@ -3,18 +3,25 @@ import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Image } from 'rea
 import { SafeAreaView } from 'react-navigation';
 import { Card, Overlay } from 'react-native-elements';
 import { CreditCardInput } from 'react-native-credit-card-input';
+import LottieView from 'lottie-react-native';
+import AwesomeButton from 'react-native-really-awesome-button';
 import AwesomeButtonCartman from "react-native-really-awesome-button/src/themes/cartman";
 
 export default class OneClassCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisible: false
+      isVisible: false,
+      ischeckmarkVisible: false
     }
   }
 
   handlePress = () => {
     this.setState({ isVisible: true })
+  };
+
+  handlePress2 = () => {
+    this.setState({ isVisible: false });
   };
 
   render() {
@@ -36,13 +43,13 @@ export default class OneClassCard extends Component {
             raiseLevel={1}
             onPress={this.handlePress}
             type="anchor"
-            style={{alignSelf: 'center'}}
+            style={{ alignSelf: 'center' }}
           >Sign Up!</AwesomeButtonCartman>
         </Card>
         <Overlay
           isVisible={this.state.isVisible}
           onBackdropPress={() => this.setState({ isVisible: false })}
-          height={360}>
+          height={400}>
           <ScrollView contentContainerStyle={{ justifyContent: 'center' }} style={styles.Overlay}>
             <View style={styles.PaymentHeader}>
               <Text style={styles.ClassText}>Sign up for {this.props.oneClass.classTitle} with {this.props.oneClass.classInstructor} on {this.props.oneClass.classDate}</Text>
@@ -53,7 +60,15 @@ export default class OneClassCard extends Component {
                 autoFocus
                 cardScale={0.9}
                 inputContainerStyle={{ borderBottomWidth: 0.8 }}
+                
               />
+              <AwesomeButton
+                onPress={this.handlePress2}
+                style={styles.SubmitButton}
+                type="anchor"
+              >
+                Submit
+              </AwesomeButton>
             </View>
           </ScrollView>
         </Overlay>
@@ -88,5 +103,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     justifyContent: 'center'
+  },
+  SubmitButton: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    margin: 10
   }
 });

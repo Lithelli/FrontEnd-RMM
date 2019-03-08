@@ -1,14 +1,30 @@
 import React, { Component } from 'react'
 import { FlatList, View } from 'react-native'
+import { connect } from 'react-redux';
+import ListItem from './ListItem';
 
-export default class AccountList extends Component {
+
+class AccountList extends Component {
+
+  renderItem(work) {
+    return <ListItem work={work} />;
+  }
+
   render() {
     return (
         <FlatList
-        data={this.props.list}
-        renderItem={({item}) => <ListItem item={item} />}
-        keyExtractor={item => item.id}
+        data={this.props.classes}
+        renderItem={this.renderItem}
+        keyExtractor={work => work.id}
       />
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { 
+    classes: state.classes
+  }
+};
+
+export default connect(mapStateToProps)(AccountList);

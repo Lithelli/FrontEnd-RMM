@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView, FlatList, AsyncStorage } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 // import { getStatusBarHeight } from 'react-native-status-bar-height';
-import AccountList from '../components/AccountList';
 import ListItem from '../components/ListItem';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from '../reducers';
 
 const ACCESS_TOKEN = 'access_token';
 
@@ -71,6 +73,7 @@ export default class Home extends Component {
 
   render() {
     return (
+     <Provider store={createStore(reducers)}>
       <ScrollView>
         <SafeAreaView>
           <View style={styles.container}>
@@ -96,6 +99,7 @@ export default class Home extends Component {
           </View>
         </SafeAreaView>
       </ScrollView>
+     </Provider>
     );
   }
 }

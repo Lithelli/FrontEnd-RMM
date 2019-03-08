@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
-import { Ionicons, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 import Landing from './src/screens/Landing';
 import Account from './src/screens/Account';
 import ClassCard from './src/components/ClassCard';

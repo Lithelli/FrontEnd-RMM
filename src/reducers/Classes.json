@@ -1,0 +1,38 @@
+[
+    {
+    "id": 1,
+    "classTitle": "Intro to Welding/Plasma Cutting",
+    "classDate": "03/25/2019",
+    "classInstructor": "Lee Panther"
+    },
+    {
+    "id": 2,
+    "classTitle": "Intro to Woodworking",
+    "classDate": "03/30/2019",
+    "classInstructor": "Michael Bakes"
+    },
+    {
+    "id": 3,
+    "classTitle": "Learn how to Code",
+    "classDate": "04/01/2019",
+    "classInstructor": "Josh Hourne"
+    },
+    {
+    "id": 4,
+    "classTitle": "Intro to Woodworking",
+    "classDate": "04/04/2019",
+    "classInstructor": "Michael Bakes"
+    },
+    {
+    "id": 5,
+    "classTitle": "Advance  Welding/Plasma Cutting",
+    "classDate": "04/12/2019",
+    "classInstructor": "Lee Panther"
+    },
+    {
+    "id": 6,
+    "classTitle": "Advanced Woodworking",
+    "classDate": "04/22/2019",
+    "classInstructor": "Michael Bakes"
+    }
+]

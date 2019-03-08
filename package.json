@@ -17,6 +17,7 @@
     "react-native-circular-progress": "^1.1.0",
     "react-native-credit-card-input": "^0.4.1",
     "react-native-elements": "^1.1.0",
+    "react-native-really-awesome-button": "^1.4.0",
     "react-native-status-bar-height": "^2.2.0",
     "react-navigation": "^3.3.2",
     "react-redux": "^6.0.1",

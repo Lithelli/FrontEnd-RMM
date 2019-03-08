@@ -122,6 +122,9 @@ const Cstyle = StyleSheet.create({
     marginTop: 9,
     textAlign: "center",
     fontSize: 37,
-    fontWeight: "bold"
+    height: 100,
+    justifyContent:"center",
+    flex:1,
+    fontWeight: "bold",
   }
 });

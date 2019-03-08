@@ -26,7 +26,8 @@ export default class RoomRental extends Component {
           onPress={this.handlePress}
         />
         <Overlay isVisible={this.state.isVisible}
-          onBackdropPress={() => this.setState({ isVisible: false })}>
+          onBackdropPress={() => this.setState({ isVisible: false })}
+          animationType="slide">
           <View style={styles.Overlay}>
             <Text>Rent a Room!</Text>
             <Text>Single Room: $80/month</Text>

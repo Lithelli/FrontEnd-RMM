@@ -22,9 +22,9 @@ export default class OneClassCard extends Component {
       <SafeAreaView>
         <Card
           image={require("../../assets/laser_cutting.jpg")}
-          featuredTitle={this.props.oneClass.classTitle + '\n' + this.props.oneClass.classInstructor}
+          featuredTitle={this.props.oneClass.classTitle}
           featuredSubtitle={this.props.oneClass.classDate}
-          featuredTitlestyle={alignSelf = 'center'}
+          featuredTitlestyle={alignItems = 'center'}
         >
           <Button
             onPress={this.handlePress}

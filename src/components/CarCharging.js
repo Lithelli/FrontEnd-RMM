@@ -39,7 +39,8 @@ export default class CarCharging extends Component {
           onPress={this.handlePress}
         />
         <Overlay isVisible={this.state.isVisible}
-          onBackdropPress={() => this.setState({ isVisible: false })}>
+          onBackdropPress={() => this.setState({ isVisible: false })}
+          animationType="slide">
           <View style={styles.Overlay}>
             <AnimatedCircularProgress
               style={styles.circle}

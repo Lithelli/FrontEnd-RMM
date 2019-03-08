@@ -9,6 +9,10 @@ import reducers from '../reducers';
 
 const ACCESS_TOKEN = 'access_token';
 
+
+HEADER_MAX_HEIGHT= 120
+HEADER_MIN_HEIGHT= 70
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -77,10 +81,15 @@ export default class Home extends Component {
       <ScrollView>
         <SafeAreaView>
           <View style={styles.container}>
+          <View style={{flex:1}}>
+            <Text style={styles.account}>
+              Account Page
+            </Text>
+          </View>
             <View style={styles.header}>
               <View>
-                <Text style={styles.avatarText}>Hello, {this.state.userName}!</Text>
-                <Text style={styles.avatarText}>Member Status: {this.state.membershipStatus}</Text>
+                <Text style={styles.avatarText}>Hello, Michael!</Text>
+                <Text style={styles.avatarText}>Member Status: Key holder</Text>
               </View>
               <View style={styles.avatar}>
                 <Avatar
@@ -121,6 +130,16 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     paddingRight: 10,
+
+  },
+  account: {
+    marginTop: 9,
+    textAlign: "center",
+    fontSize: 37,
+    height: 100,
+    justifyContent:"center",
+    flex:1,
+    fontWeight: "bold",
   },
   avatarText: {
     paddingLeft: 10,
@@ -131,6 +150,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    color:"black"
   }
 });

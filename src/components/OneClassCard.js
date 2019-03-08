@@ -31,7 +31,7 @@ export default class OneClassCard extends Component {
           style={styles.Card}
           image={require('../../assets/wooshop.jpg')}
           featuredTitle={this.props.oneClass.classTitle + '\n' + this.props.oneClass.classInstructor}
-          featuredSubtitle={this.props.oneClass.classDate}
+          featuredSubtitle={this.props.oneClass.classDate + '\n' + this.props.oneClass.price}
           featuredTitlestyle={alignItems = 'center'}
         >
           <AwesomeButtonCartman

@@ -17,6 +17,7 @@ export default class ClassCard extends Component {
           classTitle: "Intro to Welding/Plasma Cutting",
           classDate: "03/25/2019",
           classInstructor: "Lee Panther",
+          price: '$40.00',
           image: '../../assets/laser_cutting.jpg'
         },
         {
@@ -24,6 +25,7 @@ export default class ClassCard extends Component {
           classTitle: "Intro to Woodworking",
           classDate: "03/30/2019",
           classInstructor: "Michael Bakes",
+          price: '$40.00',
           image: '../../assets/woodshop.jpg'
         }
       ]

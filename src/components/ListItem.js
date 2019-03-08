@@ -40,7 +40,7 @@ export default class ListItem extends Component {
         return (
             <TouchableHighlight onPress={this.handlePress} style={styles.listItem}>
                 <View>
-                    <Text>{this.props.item.title}</Text>
+                    <Text style={{fontSize:20}}>{this.props.item.title}</Text>
                     <Overlay
                         isVisible={this.state.isVisible}
                         onBackdropPress={() => this.setState({ isVisible: false })}
@@ -48,14 +48,14 @@ export default class ListItem extends Component {
                         animationType="slide">
                         <View contentContainerStyle={{ justifyContent: 'center' }} style={styles.Overlay}>
                             <View style={styles.classBox}>
-                                <Text>Intro into Woodworking</Text>
-                                <Text>Lee Panther</Text>
-                                <Text>04/14/19</Text>
+                                <Text style={{fontSize: 18}}>Intro to Welding/Plasma Cutting</Text>
+                                <Text style={{fontSize: 18}}>Lee Panther</Text>
+                                <Text style={{fontSize: 18}}>03/25/2019</Text>
                             </View>
                             <View style={styles.classBox}>
-                                <Text>Intro into Hacking</Text>
-                                <Text>Josuha Hourne</Text>
-                                <Text>04/19/19</Text>
+                                <Text style={{fontSize: 18}}>Intro into Woodworking</Text>
+                                <Text style={{fontSize: 18}}>Michael Bakes</Text>
+                                <Text style={{fontSize: 18}}>03/30/2019</Text>
                             </View>
                         </View>
                     </Overlay>
@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
     classBox:{
         borderWidth:1,
         borderRadius:7,
-        padding:10,
-        justifyContent:"space-evenly",
+        paddingHorizontal:10,
+        justifyContent:"space-around",
         margin:20,
         flex:1,
         alignItems:'center',
-        backgroundColor:"#fdfdfd"
-
+        backgroundColor:"#fdfdfd",
+        paddingVertical:0
     }
 })

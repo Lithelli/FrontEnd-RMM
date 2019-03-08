@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, SafeAreaView, FlatList, AsyncStorage } from 'react-native';
+import { View, StyleSheet, ScrollView, SafeAreaView, FlatList, AsyncStorage, StatusBar } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 // import { getStatusBarHeight } from 'react-native-status-bar-height';
 import ListItem from '../components/ListItem';
@@ -9,9 +9,6 @@ import reducers from '../reducers';
 
 const ACCESS_TOKEN = 'access_token';
 
-
-HEADER_MAX_HEIGHT = 120
-HEADER_MIN_HEIGHT = 70
 
 export default class Home extends Component {
   constructor(props) {
@@ -78,13 +75,14 @@ export default class Home extends Component {
   render() {
     return (
       <Provider store={createStore(reducers)}>
+        <StatusBar backgroundColor="red" />
         <ScrollView>
           <SafeAreaView>
             <View style={styles.container}>
               <View style={{ flex: 1 }}>
                 <Text style={styles.account}>
                   Account Page
-            </Text>
+                </Text>
               </View>
               <View style={styles.header}>
                 <View>
@@ -93,8 +91,9 @@ export default class Home extends Component {
                 </View>
                 <View style={styles.avatar}>
                   <Avatar
+                    rounded
                     size='large'
-                    source={{ uri: 'https://yt3.ggpht.com/a-/AAuE7mC8fd9OfGF-LE7viS4c1CLtKwmMaN0j6vqIUg=s288-mo-c-c0xffffffff-rj-k-no' }}
+                    source={require('../../assets/mike.jpeg')}
                   />
                 </View>
               </View>
@@ -104,6 +103,9 @@ export default class Home extends Component {
                   renderItem={({ item }) => <ListItem item={item} />}
                   keyExtractor={item => item.id}
                 />
+              </View>
+              <View style={{ flex: 1, backgroundColor: 'rgb(214, 87, 69)', height: 480 }}>
+
               </View>
             </View>
           </SafeAreaView>
@@ -133,20 +135,21 @@ const styles = StyleSheet.create({
 
   },
   account: {
-    marginTop: 9,
+    // marginTop: 9,
     textAlign: "center",
     fontSize: 37,
     height: 100,
     justifyContent: "center",
     flex: 1,
     fontWeight: "bold",
+    backgroundColor: '#fff'
   },
   avatarText: {
     paddingLeft: 10,
     color: '#fff'
   },
   header: {
-    backgroundColor: '#413030',
+    backgroundColor: 'rgb(214, 87, 69)',
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',

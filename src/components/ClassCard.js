@@ -72,7 +72,9 @@ export default class ClassCard extends Component {
   render() {
     return (
       <SafeAreaView>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView 
+          style={{backgroundColor: 'rgb(214, 87, 69)', height: 800}}
+          showsVerticalScrollIndicator={false}>
           <View>
             <Text style={Cstyle.classHeader}>Upcoming Classes</Text>
           </View>
@@ -124,12 +126,13 @@ const Cstyle = StyleSheet.create({
     padding: 10
   },
   classHeader: {
-    marginTop: 9,
     textAlign: "center",
     fontSize: 37,
     height: 100,
     justifyContent:"center",
     flex:1,
     fontWeight: "bold",
+    backgroundColor: '#fff',
+    paddingTop: 18
   }
 });

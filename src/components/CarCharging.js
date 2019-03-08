@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { Tile, Overlay, Input, Button } from 'react-native-elements';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
@@ -61,14 +61,15 @@ export default class CarCharging extends Component {
           featured
           titleStyle={styles.text}
           width={275}
+          containerStyle={{borderRadius:2}}
           onPress={this.handlePress}
         />
         <Overlay
-          // style={styles.Overlay}
+          style={styles.Overlay}
           height={500}
           isVisible={this.state.isVisible}
           onBackdropPress={() => this.setState({ isVisible: false })}>
-          <View style={styles.overlayView}>
+          <KeyboardAvoidingView style={styles.overlayView}>
             <AnimatedCircularProgress
               style={styles.circle}
               size={200}
@@ -105,7 +106,7 @@ export default class CarCharging extends Component {
                 title="Pay Now"
               />
             </View>
-          </View>
+          </KeyboardAvoidingView>
         </Overlay>
       </View>
     )

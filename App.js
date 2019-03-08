@@ -104,7 +104,7 @@ export default createAppContainer(createSwitchNavigator(
     SignUp: SignUpFormPage,
   },
   {
-    initialRouteName: 'App'
+    initialRouteName: 'Auth'
   }
 ));
 

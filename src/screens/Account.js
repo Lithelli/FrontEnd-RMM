@@ -45,7 +45,7 @@ export default class Home extends Component {
   getToken = async () => {
     try {
       let accessToken = await AsyncStorage.getItem(ACCESS_TOKEN);
-      if(!accessToken) {
+      if (!accessToken) {
         console.log('No token found');
         this.props.navigation.navigate('Auth');
       } else {
@@ -56,7 +56,7 @@ export default class Home extends Component {
       this.props.navigation.navigate('Auth');
     }
   }
-  
+
   componentDidMount() {
 
   }
@@ -67,39 +67,39 @@ export default class Home extends Component {
 
   handleChevron = () => {
     this.setState({
-      fuckit: <Entypo name="chevron-down"  size={32} color="black"/>
+      fuckit: <Entypo name="chevron-down" size={32} color="black" />
     })
   }
 
   render() {
     return (
-     <Provider store={createStore(reducers)}>
-      <ScrollView>
-        <SafeAreaView>
-          <View style={styles.container}>
-            <View style={styles.header}>
-              <View>
-                <Text style={styles.avatarText}>Hello, {this.state.userName}!</Text>
-                <Text style={styles.avatarText}>Member Status: {this.state.membershipStatus}</Text>
-              </View>
-              <View style={styles.avatar}>
-                <Avatar
-                  size='large'
-                  source={{ uri: 'https://yt3.ggpht.com/a-/AAuE7mC8fd9OfGF-LE7viS4c1CLtKwmMaN0j6vqIUg=s288-mo-c-c0xffffffff-rj-k-no' }}
-                />
+      <Provider store={createStore(reducers)}>
+        <ScrollView>
+          <SafeAreaView>
+            <View style={styles.container}>
+              <View style={styles.header}>
+                <View>
+                  <Text style={styles.avatarText}>Hello, {this.state.userName}!</Text>
+                  <Text style={styles.avatarText}>Member Status: {this.state.membershipStatus}</Text>
+                </View>
+                <View style={styles.avatar}>
+                  <Avatar
+                    size='large'
+                    source={require('../../assets/mike.jpeg')}
+                  />
+                </View>
               </View>
             </View>
-          </View>
-          <View style={{ flex: 1 }}>
-            <FlatList
-              data={this.state.list}
-              renderItem={({item}) => <ListItem item={item} />}
-              keyExtractor={item => item.id}
-            />
-          </View>
-        </SafeAreaView>
-      </ScrollView>
-     </Provider>
+            <View style={{ flex: 1 }}>
+              <FlatList
+                data={this.state.list}
+                renderItem={({ item }) => <ListItem item={item} />}
+                keyExtractor={item => item.id}
+              />
+            </View>
+          </SafeAreaView>
+        </ScrollView>
+      </Provider>
     );
   }
 }

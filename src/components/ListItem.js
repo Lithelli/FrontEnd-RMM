@@ -48,14 +48,14 @@ export default class ListItem extends Component {
                         animationType="slide">
                         <View contentContainerStyle={{ justifyContent: 'center' }} style={styles.Overlay}>
                             <View style={styles.classBox}>
-                                <Text style={{fontSize: 18}}>Intro into Woodworking</Text>
+                                <Text style={{fontSize: 18}}>Intro to Welding/Plasma Cutting</Text>
                                 <Text style={{fontSize: 18}}>Lee Panther</Text>
-                                <Text style={{fontSize: 18}}>04/14/19</Text>
+                                <Text style={{fontSize: 18}}>03/25/2019</Text>
                             </View>
                             <View style={styles.classBox}>
-                                <Text style={{fontSize: 18}}>Intro into Hacking</Text>
-                                <Text style={{fontSize: 18}}>Josuha Hourne</Text>
-                                <Text style={{fontSize: 18}}>04/19/19</Text>
+                                <Text style={{fontSize: 18}}>Intro into Woodworking</Text>
+                                <Text style={{fontSize: 18}}>Michael Bakes</Text>
+                                <Text style={{fontSize: 18}}>03/30/2019</Text>
                             </View>
                         </View>
                     </Overlay>

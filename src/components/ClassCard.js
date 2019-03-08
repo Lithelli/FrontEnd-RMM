@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, ScrollView, View, AsyncStorage } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import OneClassCard from "./OneClassCard";
+import image from '../../assets/laser_cutting.jpg'
 
 const ACCESS_TOKEN = 'access_token';
 const USER_ID = 'user_id';
@@ -15,13 +16,15 @@ export default class ClassCard extends Component {
           id: 1,
           classTitle: "Intro to Welding/Plasma Cutting",
           classDate: "03/25/2019",
-          classInstructor: "Lee Panther"
+          classInstructor: "Lee Panther",
+          image: '../../assets/laser_cutting.jpg'
         },
         {
           id: 2,
           classTitle: "Intro to Woodworking",
           classDate: "03/30/2019",
-          classInstructor: "Michael Bakes"
+          classInstructor: "Michael Bakes",
+          image: '../../assets/woodshop.jpg'
         }
       ]
     };

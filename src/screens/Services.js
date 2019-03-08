@@ -21,13 +21,16 @@ export default class Services extends Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    backgroundColor: 'rgb(214, 87, 69)',
+    paddingTop: 25,
+    height: 700
   },
   header: {
-    marginTop: 9,
-    marginBottom: 15,
     textAlign: "center",
     fontSize: 37,
     fontWeight: "bold",
-    height: 100
+    height: 100,
+    backgroundColor: '#fff',
+    paddingTop: 18
   }
 });

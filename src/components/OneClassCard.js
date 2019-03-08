@@ -53,6 +53,7 @@ export default class OneClassCard extends Component {
                 autoFocus
                 cardScale={0.9}
                 inputContainerStyle={{ borderBottomWidth: 0.8 }}
+                
               />
             </View>
           </ScrollView>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { Card, Button, Overlay } from 'react-native-elements';
+import { Card, Overlay } from 'react-native-elements';
 import { CreditCardInput } from 'react-native-credit-card-input';
-
+import AwesomeButtonCartman from "react-native-really-awesome-button/src/themes/cartman";
 
 export default class OneClassCard extends Component {
   constructor(props) {
@@ -21,16 +21,23 @@ export default class OneClassCard extends Component {
     return (
       <SafeAreaView>
         <Card
-          image={require("../../assets/laser_cutting.jpg")}
+          style={styles.Card}
+          image={require('../../assets/wooshop.jpg')}
           featuredTitle={this.props.oneClass.classTitle + '\n' + this.props.oneClass.classInstructor}
           featuredSubtitle={this.props.oneClass.classDate}
-          featuredTitlestyle={alignSelf = 'center'}
+          featuredTitlestyle={alignItems = 'center'}
         >
-          <Button
+          <AwesomeButtonCartman
+            activityColor='#F1F1F1'
+            backgroundDarker='#F1F1F1'
+            backgroundColor='#F1F1F1'
+            textColor='#000'
+            width={150}
+            raiseLevel={1}
             onPress={this.handlePress}
-            color="#D46A6A"
-            title="Sign Up"
-          />
+            type="anchor"
+            style={{alignSelf: 'center'}}
+          >Sign Up!</AwesomeButtonCartman>
         </Card>
         <Overlay
           isVisible={this.state.isVisible}
@@ -75,5 +82,11 @@ const styles = StyleSheet.create({
   },
   ClassText: {
     fontWeight: 'bold'
+  },
+  Card: {
+    flex: 1,
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center'
   }
 });

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, View } from 'react-native'
 import { connect } from 'react-redux';
-import ListItem from './ListItem';
+
 
 
 class AccountList extends Component {

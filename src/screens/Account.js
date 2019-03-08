@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView, FlatList } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 // import { getStatusBarHeight } from 'react-native-status-bar-height';
-import AccountList from '../components/AccountList';
 import ListItem from '../components/ListItem';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';

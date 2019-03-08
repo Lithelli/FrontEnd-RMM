@@ -19,7 +19,6 @@ class LandingPage extends React.Component {
   }
 }
 
-
 class SignUpFormPage extends React.Component {
   render() {
     return (
@@ -45,6 +44,15 @@ class AccountScreen extends React.Component {
     );
   }
 }
+
+class ServicesScreen extends React.Component {
+  render() {
+    return (
+      <Services navigation={this.props.navigation} />
+    );
+  }
+}
+
 const TabNavigator = createBottomTabNavigator(
   {
     Account: {
@@ -66,7 +74,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     Services: {
-      screen:Services,
+      screen: ServicesScreen,
       navigationOptions: {
         tabBarLabel: ' ',
         tabBarIcon: ({ tintColor }) => (
@@ -82,7 +90,7 @@ const TabNavigator = createBottomTabNavigator(
       style: {
         backgroundColor: '#f1f1f1',
         color: '#f1f1f1',
-        paddingTop:5
+        paddingTop: 5
       }
     }
   }
@@ -93,10 +101,10 @@ export default createAppContainer(createSwitchNavigator(
   {
     Auth: LandingPage,
     App: TabNavigator,
-    SignUp: SignUpFormPage
+    SignUp: SignUpFormPage,
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 ));
 
